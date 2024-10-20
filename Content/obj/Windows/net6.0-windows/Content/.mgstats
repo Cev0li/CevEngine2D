@@ -1,0 +1,3 @@
+Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"C:/Users/markc/source/repos/monogameTutorial/Content/ground_tiles.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/Content/ground_tiles.xnb","TextureProcessor","Texture2DContent",227339,1884373,0.1446274
+"C:/Users/markc/source/repos/monogameTutorial/Content/rpgcritters2.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/Content/rpgcritters2.xnb","TextureProcessor","Texture2DContent",11275,90101,0.0920465
