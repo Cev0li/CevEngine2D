@@ -6,50 +6,40 @@ namespace monogameTutorial {
     internal class Player : Sprite {
 
         public int[] cropArgs;
-        public Vector2 scale;
-        public Rectangle dRect;
+        public Rectangle DRect;
         public Rectangle sRect;
         public Viewport viewport;
+        public Vector2 position;
+        public Vector2 velocity;
 
         //constructor takes array of 4 values used to crop a sprite sheet.
-        public Player(Texture2D texture, Vector2 position, Vector2 scale, int[] arr, Viewport viewport) : base(texture, position) {
-            this.cropArgs = arr;
-            this.scale = scale;
-            this.dRect = new Rectangle((int)position.X, (int)position.Y, (int)scale.X, (int)scale.Y);
+        public Player(Texture2D texture, Rectangle DRect, Vector2 position, int[] cropArgs, Viewport viewport) : base(texture) { 
+            this.DRect = DRect;
+            this.position = position;
             this.sRect = new Rectangle(cropArgs[0], cropArgs[1], cropArgs[2], cropArgs[3]);
             this.viewport = viewport;
+            this.velocity = new Vector2(1, 1);
         }
 
         public void Update() {
             if (Keyboard.GetState().IsKeyDown(Keys.A)) {
-                dRect.X -= 1;
+                position.X -= velocity.X;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.D)) {
-                dRect.X += 1;
+                position.X += velocity.X;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.W)) {
-                dRect.Y -= 1;
+                position.Y -= velocity.X;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S)) {
-                dRect.Y += 1;
+                position.Y += velocity.X;
             }
         }
 
         public void Draw(SpriteBatch spriteBatch) {
-            Rectangle dest = new(
-                //350,
-                //190,
-                //50,
-                //50
-                viewport.Width / 2 - 25,
-                viewport.Height / 2 - 25,
-                50,
-                50
-            );
-
             spriteBatch.Draw(
                 texture,
-                dest,
+                DRect,
                 sRect,
                 Color.White);
         }

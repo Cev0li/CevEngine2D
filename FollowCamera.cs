@@ -5,14 +5,16 @@ namespace monogameTutorial {
 	public class FollowCamera {
 
 		public Vector2 position;
-		public FollowCamera(Vector2 position) {
+		Viewport viewport;
+		public FollowCamera(Vector2 position, Viewport viewport) {
 			this.position = position;
+			this.viewport = viewport;
 		}
 
-		public void follow(Rectangle target, Vector2 screenSize) {
+		public void follow(Vector2 playerShift, Vector2 screenSize) {
 			position = new Vector2(
-				-target.X + (screenSize.X / 2 - target.Width / 2),
-				-target.Y + (screenSize.Y / 2 - target.Height / 2)
+				-playerShift.X + viewport.Width / 2,
+				-playerShift.Y + viewport.Height / 2
 			);
 		}
 	}
