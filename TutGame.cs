@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-//using SharpDX;
-
-//using SharpDX.Direct3D11;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -30,6 +27,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
         tile map layers to effectively "move" the player around the map. Collision is detected but need to be handled. Added viewport
         object to facilitate cleaner code when positioning sprites in relaionship to center of window. This also
         scales the positioning of game drawing to any viewport dimension.
+    10/20/24 CEV- Collision logic is rudimentary, but the player sprite stops when it collides with tiles on collision layer. Need to write
+                    velocity as two vector2s each dealing with one axis and the two directions it can move. This needs to be done to fix a
+                    bug causing the camera to continue moving when plyer collides. In this case, the player position Vector should not update in 1 
+                    direction. Currently the position Vector in Player can only handle 2 movements: X and Y axis generally.
+        
  */
 
 namespace monogameTutorial {
@@ -88,7 +90,7 @@ namespace monogameTutorial {
                50
            );
             Vector2 position = new Vector2(400, 400);
-            int[] crop = { 0, 0, 50, 50 };
+            int[] crop = { 15, 12, 32, 32 };
             player = new Player(
                 texture,
                 dest,
@@ -104,9 +106,9 @@ namespace monogameTutorial {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            bool collision = false;
+            //player.Update(Keyboard.GetState());
             player.Update();
-
-            
             foreach (var item in stoneLayer.tileMap) {
                 Vector2 position = item.Key;
                 Rectangle mapLocation= new(
@@ -114,21 +116,52 @@ namespace monogameTutorial {
                         (int)position.Y * tilesize + (int)camera.position.Y,
                         tilesize,
                         tilesize
-                    );
-                if (
-                    mapLocation.Top < player.DRect.Bottom &&
-                    mapLocation.Bottom > player.DRect.Top &&
-                    mapLocation.Left < player.DRect.Right &&
-                    mapLocation.Right > player.DRect.Left
-                    ) {
+                );
+                if (mapLocation.Top < player.DRect.Bottom &&
+                        mapLocation.Bottom > player.DRect.Top &&
+                        mapLocation.Left < player.DRect.Right &&
+                        mapLocation.Right > player.DRect.Left) 
+                {
                     Debug.WriteLine("collision " + count);
                     count++;
+                    collision = true;
+
+                    int[] possibleIntersections = new int[] {
+                        Math.Abs(mapLocation.Top - player.DRect.Top),
+                        Math.Abs(mapLocation.Right - player.DRect.Right),
+                        Math.Abs(mapLocation.Bottom - player.DRect.Bottom),
+                        Math.Abs(mapLocation.Left - player.DRect.Left)
+                        };
+                    int maxValue = -1;
+                    int maxIndex = -1;
+                    for (int i = 0; i < possibleIntersections.Length; i++) {
+                        if (possibleIntersections[i] > maxValue) {
+                            maxValue = possibleIntersections[i];
+                            maxIndex = i;
+
+                        }
+                    }
+
+                    switch (maxIndex) {
+                        case 0:
+                            Debug.WriteLine("top");
+                            break;
+                        case 1:
+                            Debug.WriteLine("Right");
+                            break;
+                        case 2:
+                            Debug.WriteLine("Bottom");
+                            break;
+                        case 3:
+                            Debug.WriteLine("Left");
+                            player.DRect.X = mapLocation.Left - player.DRect.Width;
+                            break;
+                    }
+                    
                 }
-                //_viewport.Height / 2 - player.Drect.Height / 2
             }
 
             camera.follow(player.position, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight));
-
             base.Update(gameTime);
         }
 
@@ -140,7 +173,6 @@ namespace monogameTutorial {
             baseLayer.Draw(_spriteBatch, camera.position);
             stoneLayer.Draw(_spriteBatch, camera.position);
 
-
             foreach (var item in stoneLayer.tileMap) {
                 Vector2 position = item.Key;
                 Rectangle mapLocation = new(
@@ -151,9 +183,8 @@ namespace monogameTutorial {
                     );
                 DrawRectHollow(_spriteBatch, mapLocation, 4);
             }
+            
             DrawRectHollow(_spriteBatch, player.DRect, 4);
-
-
             player.Draw(_spriteBatch);
 
             _spriteBatch.End();

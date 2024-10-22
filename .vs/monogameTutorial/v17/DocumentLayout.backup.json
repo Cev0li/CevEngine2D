@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|solutionrelative:player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|solutionrelative:followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\tilelayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|solutionrelative:tilelayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|solutionrelative:followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|monogameTutorial.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,18 +37,18 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 131,
+          "DockedWidth": 171,
           "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "TileLayer.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\TileLayer.cs",
               "RelativeDocumentMoniker": "TileLayer.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\TileLayer.cs",
               "RelativeToolTip": "TileLayer.cs",
-              "ViewState": "AgIAACcAAAAAAAAAAAAowBEAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T19:06:07.387Z",
               "IsPinned": true,
@@ -65,8 +65,7 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-13T22:08:09.897Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -76,23 +75,22 @@
               "RelativeDocumentMoniker": "Player.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\Player.cs",
               "RelativeToolTip": "Player.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-10T01:45:01.777Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "FollowCamera.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\FollowCamera.cs",
               "RelativeDocumentMoniker": "FollowCamera.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\FollowCamera.cs",
               "RelativeToolTip": "FollowCamera.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-14T00:39:50.596Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-14T00:39:50.596Z"
             },
             {
               "$type": "Document",
@@ -121,7 +119,7 @@
           ]
         },
         {
-          "DockedWidth": 231,
+          "DockedWidth": 191,
           "SelectedChildIndex": 0,
           "Children": [
             {
@@ -132,7 +130,7 @@
               "RelativeDocumentMoniker": "TutGame.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\TutGame.cs*",
               "RelativeToolTip": "TutGame.cs*",
-              "ViewState": "AgIAAD8AAAAAAAAAAAAmwFIAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAwwG4AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T00:59:34.81Z",
               "EditorCaption": ""

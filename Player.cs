@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
 namespace monogameTutorial {
     internal class Player : Sprite {
@@ -22,6 +23,7 @@ namespace monogameTutorial {
         }
 
         public void Update() {
+
             if (Keyboard.GetState().IsKeyDown(Keys.A)) {
                 position.X -= velocity.X;
             }
@@ -29,11 +31,12 @@ namespace monogameTutorial {
                 position.X += velocity.X;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.W)) {
-                position.Y -= velocity.X;
+                position.Y -= velocity.Y;
             }
             if (Keyboard.GetState().IsKeyDown(Keys.S)) {
-                position.Y += velocity.X;
+                position.Y += velocity.Y;
             }
+            velocity.X = 1;
         }
 
         public void Draw(SpriteBatch spriteBatch) {
