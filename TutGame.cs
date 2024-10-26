@@ -6,7 +6,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
+using System.Xml.Serialization;
+//using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
 
 /*
     10/13/24 CEV- init project. Wrote Sprite, modSprite, Tile Layer class and methods. Need to optomize TileLayer.draw
@@ -31,22 +32,24 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TrayNotify;
                     velocity as two vector2s each dealing with one axis and the two directions it can move. This needs to be done to fix a
                     bug causing the camera to continue moving when plyer collides. In this case, the player position Vector should not update in 1 
                     direction. Currently the position Vector in Player can only handle 2 movements: X and Y axis generally.
-        
+    10/24/24 CEV- Placed collision logic in its own method to make Update() more readable.        
+ 
  */
 
 namespace monogameTutorial {
     public class TutGame : Game {
         private GraphicsDeviceManager _graphics;
-        private SpriteBatch _spriteBatch;
-        Viewport _viewport;
-        private FollowCamera camera;
+        private SpriteBatch _spriteBatch; //object for draw method
+        private FollowCamera camera; //allows for viewport centered player. Translates player movement to the map
         private Player player;
-        private int tilesize = 32;
+        Viewport _viewport; //Object for dynamic screen display across devices
+
+        private int tilesize = 32; //map tilesize for handling sprite sheet/draw calls
         private Texture2D rectangleTexture; //debug variable for rectHollow method
         int count = 0; //debug variable
 
-        TileLayer baseLayer;
-        TileLayer stoneLayer;
+        TileLayer baseLayer; //main display layer for sandbox map
+        TileLayer collisionLayer; //collision layer for sandbox map
 
         public TutGame() {
             _graphics = new GraphicsDeviceManager(this);
@@ -56,7 +59,7 @@ namespace monogameTutorial {
             
         protected override void Initialize() {
             _viewport = _graphics.GraphicsDevice.Viewport;
-            camera = new FollowCamera(Vector2.Zero, _viewport);
+            camera = new FollowCamera(Vector2.Zero, _viewport); //load camera object
 
             base.Initialize();
         }
@@ -71,26 +74,24 @@ namespace monogameTutorial {
                 21
                 );
 
-            stoneLayer = new(
+            //load temp collision layer
+            collisionLayer = new(
                 "../../../data/tutorialmap._stone.csv",
                 Content.Load<Texture2D>("ground_Tiles"),
                 21
                 );
 
-            // currently loads a scaled spider
+            // currently loads a scaled spider as sandbox player
             Texture2D texture = Content.Load<Texture2D>("rpgcritters2");
+            Vector2 position = new Vector2(400, 400);
+            int[] crop = { 15, 12, 32, 32 };
             Rectangle dest = new(
-            //350,
-            //190,
-            //50,
-            //50
                _viewport.Width / 2 - 25,
                _viewport.Height / 2 - 25,
                50,
                50
-           );
-            Vector2 position = new Vector2(400, 400);
-            int[] crop = { 15, 12, 32, 32 };
+            );
+
             player = new Player(
                 texture,
                 dest,
@@ -98,6 +99,7 @@ namespace monogameTutorial {
                 crop, 
                 _viewport);
 
+            //Debug stuff for DrawRectHollow()
             rectangleTexture = new Texture2D(GraphicsDevice, 1, 1);
             rectangleTexture.SetData(new Color[] { new(255, 0, 0, 255) });
         }
@@ -106,32 +108,44 @@ namespace monogameTutorial {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            bool collision = false;
-            //player.Update(Keyboard.GetState());
-            player.Update();
-            foreach (var item in stoneLayer.tileMap) {
+            float[] playerVelocity = { 1.5f, 1.5f, 1.5f, 1.5f }; //baseline player movement resets every update. Will change based on game mechanics. Best way currently is to refresh state every frame.
+            
+            count++; //begining to experiment with frame counting for animations
+            if (count % 30 == 0) {
+                Debug.WriteLine(count);
+            }
+
+            HandleCollisions(collisionLayer, playerVelocity, player, tilesize, camera); // method directly below for handling collision events
+            player.Update(playerVelocity); //Update player according to class logic
+            camera.follow(player.position, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight)); //update camera offset with player movement
+
+            base.Update(gameTime);
+        }
+
+        //Define the collision point between rectangles and handle player movement. Needs optimization
+        public void HandleCollisions(TileLayer collisionLayer, float[] playerVelocity, Player player, int tlesize, FollowCamera camera) {
+            foreach (var item in collisionLayer.tileMap) {
                 Vector2 position = item.Key;
-                Rectangle mapLocation= new(
+                //Rect for current position of collision layer tiles
+                Rectangle mapLocation = new(
                         (int)position.X * tilesize + (int)camera.position.X,
                         (int)position.Y * tilesize + (int)camera.position.Y,
                         tilesize,
                         tilesize
                 );
-                if (mapLocation.Top < player.DRect.Bottom &&
-                        mapLocation.Bottom > player.DRect.Top &&
-                        mapLocation.Left < player.DRect.Right &&
-                        mapLocation.Right > player.DRect.Left) 
-                {
-                    Debug.WriteLine("collision " + count);
-                    count++;
-                    collision = true;
-
+                //Evaluates true when Player rect intersects a collision tile. TODO: change to A.Intersects(b) method contained in Rectangle object
+                if (mapLocation.Top < player.dRect.Bottom &&
+                        mapLocation.Bottom > player.dRect.Top &&
+                        mapLocation.Left < player.dRect.Right &&
+                        mapLocation.Right > player.dRect.Left) {
+                    //Evaluate state of player and collision rectangle relationship
                     int[] possibleIntersections = new int[] {
-                        Math.Abs(mapLocation.Top - player.DRect.Top),
-                        Math.Abs(mapLocation.Right - player.DRect.Right),
-                        Math.Abs(mapLocation.Bottom - player.DRect.Bottom),
-                        Math.Abs(mapLocation.Left - player.DRect.Left)
+                        Math.Abs(mapLocation.Top - player.dRect.Top),
+                        Math.Abs(mapLocation.Right - player.dRect.Right),
+                        Math.Abs(mapLocation.Bottom - player.dRect.Bottom),
+                        Math.Abs(mapLocation.Left - player.dRect.Left)
                         };
+                    //Max value evaluates to the location of collision on rectangles
                     int maxValue = -1;
                     int maxIndex = -1;
                     for (int i = 0; i < possibleIntersections.Length; i++) {
@@ -141,28 +155,28 @@ namespace monogameTutorial {
 
                         }
                     }
-
+                    //Stop player movement against collision tile
                     switch (maxIndex) {
                         case 0:
-                            Debug.WriteLine("top");
+                            playerVelocity[0] = 0;
+                            //Debug.WriteLine("top");
                             break;
                         case 1:
-                            Debug.WriteLine("Right");
+                            playerVelocity[1] = 0;
+                            //Debug.WriteLine("Right");
                             break;
                         case 2:
-                            Debug.WriteLine("Bottom");
+                            playerVelocity[2] = 0;
+                            //Debug.WriteLine("Bottom");
                             break;
                         case 3:
-                            Debug.WriteLine("Left");
-                            player.DRect.X = mapLocation.Left - player.DRect.Width;
+                            playerVelocity[3] = 0;
+                            //Debug.WriteLine("Left");
                             break;
                     }
-                    
+
                 }
             }
-
-            camera.follow(player.position, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight));
-            base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime) {
@@ -171,9 +185,10 @@ namespace monogameTutorial {
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             baseLayer.Draw(_spriteBatch, camera.position);
-            stoneLayer.Draw(_spriteBatch, camera.position);
+            collisionLayer.Draw(_spriteBatch, camera.position);
 
-            foreach (var item in stoneLayer.tileMap) {
+            //Debug method for collision tile hitbox
+            foreach (var item in collisionLayer.tileMap) {
                 Vector2 position = item.Key;
                 Rectangle mapLocation = new(
                         (int)position.X * tilesize + (int)camera.position.X,
@@ -184,7 +199,8 @@ namespace monogameTutorial {
                 DrawRectHollow(_spriteBatch, mapLocation, 4);
             }
             
-            DrawRectHollow(_spriteBatch, player.DRect, 4);
+            //Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
+            DrawRectHollow(_spriteBatch, player.dRect, 4);
             player.Draw(_spriteBatch);
 
             _spriteBatch.End();
@@ -192,6 +208,7 @@ namespace monogameTutorial {
             base.Draw(gameTime);
         }
 
+        //Debug method for outlining rectangles
         public void DrawRectHollow(SpriteBatch spriteBatch, Rectangle rect, int thickness) {
             spriteBatch.Draw(
                 rectangleTexture,

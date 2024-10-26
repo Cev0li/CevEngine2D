@@ -37,3 +37,5 @@ C:\Users\markc\source\repos\monogameTutorial\obj\Debug\net6.0-windows\monogameTu
 C:\Users\markc\source\repos\monogameTutorial\obj\Debug\net6.0-windows\ref\monogameTutorial.dll
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\rpgcritters2.xnb
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\ground_tiles.xnb
+C:\Users\markc\source\repos\monogameTutorial\obj\Debug\net6.0-windows\monogameTutorial.sourcelink.json
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\archer.xnb

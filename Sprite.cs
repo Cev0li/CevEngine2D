@@ -2,7 +2,10 @@
 using Microsoft.Xna.Framework.Graphics;
 
 namespace monogameTutorial {
-    internal class Sprite {
+    public class Sprite {
+        /* TO DO: Make sprite class an interface. Common game state varibles will be handled in 
+         * this interface i.e. Enemies, Players, Friendly units etc..
+         * Possibly bring position variable back to sprite interface */
 
         public Texture2D texture;
         //public Vector2 position;
