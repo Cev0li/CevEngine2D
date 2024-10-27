@@ -32,7 +32,8 @@ using System.Xml.Serialization;
                     velocity as two vector2s each dealing with one axis and the two directions it can move. This needs to be done to fix a
                     bug causing the camera to continue moving when plyer collides. In this case, the player position Vector should not update in 1 
                     direction. Currently the position Vector in Player can only handle 2 movements: X and Y axis generally.
-    10/24/24 CEV- Placed collision logic in its own method to make Update() more readable.        
+    10/24/24 CEV- Placed collision logic in its own method to make Update() more readable.
+    10/26/24 CEV- Changed scope of classes and fields to closer resemble c# and OOP standards. Cleaned up and simplified field definitions.
  
  */
 
@@ -48,8 +49,8 @@ namespace monogameTutorial {
         private Texture2D rectangleTexture; //debug variable for rectHollow method
         int count = 0; //debug variable
 
-        TileLayer baseLayer; //main display layer for sandbox map
-        TileLayer collisionLayer; //collision layer for sandbox map
+        private TileLayer baseLayer; //base display layer for sandbox map
+        private TileLayer collisionLayer; //collision layer for sandbox map
 
         public TutGame() {
             _graphics = new GraphicsDeviceManager(this);
@@ -83,13 +84,14 @@ namespace monogameTutorial {
 
             // currently loads a scaled spider as sandbox player
             Texture2D texture = Content.Load<Texture2D>("rpgcritters2");
-            Vector2 position = new Vector2(400, 400);
-            int[] crop = { 15, 12, 32, 32 };
+            Vector2 position = new Vector2(200, 200);
+            int[] crop = { 15, 12, 32, 32 }; //TODO: change Player to accept source rect directly
+            int spriteScale = 50;
             Rectangle dest = new(
-               _viewport.Width / 2 - 25,
-               _viewport.Height / 2 - 25,
-               50,
-               50
+               _viewport.Width / 2 - spriteScale / 2,
+               _viewport.Height / 2 - spriteScale / 2,
+               spriteScale,
+               spriteScale
             );
 
             player = new Player(
@@ -117,33 +119,30 @@ namespace monogameTutorial {
 
             HandleCollisions(collisionLayer, playerVelocity, player, tilesize, camera); // method directly below for handling collision events
             player.Update(playerVelocity); //Update player according to class logic
-            camera.follow(player.position, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight)); //update camera offset with player movement
+            camera.Follow(player.Position, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight)); //update camera offset with player movement
 
             base.Update(gameTime);
         }
 
         //Define the collision point between rectangles and handle player movement. Needs optimization
-        public void HandleCollisions(TileLayer collisionLayer, float[] playerVelocity, Player player, int tlesize, FollowCamera camera) {
+        internal void HandleCollisions(TileLayer collisionLayer, float[] playerVelocity, Player player, int tlesize, FollowCamera camera) {
             foreach (var item in collisionLayer.tileMap) {
                 Vector2 position = item.Key;
                 //Rect for current position of collision layer tiles
                 Rectangle mapLocation = new(
-                        (int)position.X * tilesize + (int)camera.position.X,
-                        (int)position.Y * tilesize + (int)camera.position.Y,
+                        (int)position.X * tilesize + (int)camera.Position.X,
+                        (int)position.Y * tilesize + (int)camera.Position.Y,
                         tilesize,
                         tilesize
                 );
-                //Evaluates true when Player rect intersects a collision tile. TODO: change to A.Intersects(b) method contained in Rectangle object
-                if (mapLocation.Top < player.dRect.Bottom &&
-                        mapLocation.Bottom > player.dRect.Top &&
-                        mapLocation.Left < player.dRect.Right &&
-                        mapLocation.Right > player.dRect.Left) {
+                //Evaluates true when Player rect intersects a collision tile.
+                if (mapLocation.Intersects(player.DRect)) {
                     //Evaluate state of player and collision rectangle relationship
                     int[] possibleIntersections = new int[] {
-                        Math.Abs(mapLocation.Top - player.dRect.Top),
-                        Math.Abs(mapLocation.Right - player.dRect.Right),
-                        Math.Abs(mapLocation.Bottom - player.dRect.Bottom),
-                        Math.Abs(mapLocation.Left - player.dRect.Left)
+                        Math.Abs(mapLocation.Top - player.DRect.Top),
+                        Math.Abs(mapLocation.Right - player.DRect.Right),
+                        Math.Abs(mapLocation.Bottom - player.DRect.Bottom),
+                        Math.Abs(mapLocation.Left - player.DRect.Left)
                         };
                     //Max value evaluates to the location of collision on rectangles
                     int maxValue = -1;
@@ -174,37 +173,34 @@ namespace monogameTutorial {
                             //Debug.WriteLine("Left");
                             break;
                     }
-
                 }
             }
         }
 
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
-
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            baseLayer.Draw(_spriteBatch, camera.position);
-            collisionLayer.Draw(_spriteBatch, camera.position);
+            baseLayer.Draw(_spriteBatch, camera.Position);
+            collisionLayer.Draw(_spriteBatch, camera.Position);
 
             //Debug method for collision tile hitbox
             foreach (var item in collisionLayer.tileMap) {
                 Vector2 position = item.Key;
                 Rectangle mapLocation = new(
-                        (int)position.X * tilesize + (int)camera.position.X,
-                        (int)position.Y * tilesize + (int)camera.position.Y,
+                        (int)position.X * tilesize + (int)camera.Position.X,
+                        (int)position.Y * tilesize + (int)camera.Position.Y,
                         tilesize,
                         tilesize
-                    );
+                );
                 DrawRectHollow(_spriteBatch, mapLocation, 4);
             }
             
             //Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
-            DrawRectHollow(_spriteBatch, player.dRect, 4);
+            DrawRectHollow(_spriteBatch, player.DRect, 4);
             player.Draw(_spriteBatch);
 
             _spriteBatch.End();
-
             base.Draw(gameTime);
         }
 

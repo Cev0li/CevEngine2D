@@ -2,17 +2,20 @@
 using Microsoft.Xna.Framework.Graphics;
 
 namespace monogameTutorial {
-	public class FollowCamera {
+	internal class FollowCamera {
 
-		public Vector2 position; //Set by player position field for map movement
-		Viewport viewport;
+        private Viewport viewport;
+
+        private Vector2 _position; //Set by player position field for map movement
+		public Vector2 Position { get { return _position;  } }
+
 		public FollowCamera(Vector2 position, Viewport viewport) {
-			this.position = position;
+			this._position = position;
 			this.viewport = viewport;
 		}
 
-		public void follow(Vector2 playerShift, Vector2 screenSize) {
-			position = new Vector2(
+		public void Follow(Vector2 playerShift, Vector2 screenSize) {
+			_position = new Vector2(
 				-playerShift.X + viewport.Width / 2,
 				-playerShift.Y + viewport.Height / 2
 			);
