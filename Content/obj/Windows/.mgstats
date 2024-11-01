@@ -1,4 +1,5 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/markc/source/repos/monogameTutorial/Content/archer.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/archer.xnb","TextureProcessor","Texture2DContent",23948,2073685,0.1688479
+"C:/Users/markc/source/repos/monogameTutorial/Content/Fireball_Effect_01.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/Fireball_Effect_01.xnb","TextureProcessor","Texture2DContent",12769,90085,0.1160788
 "C:/Users/markc/source/repos/monogameTutorial/Content/ground_tiles.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/ground_tiles.xnb","TextureProcessor","Texture2DContent",227339,1884373,0.130877
 "C:/Users/markc/source/repos/monogameTutorial/Content/rpgcritters2.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/rpgcritters2.xnb","TextureProcessor","Texture2DContent",11275,90101,0.1150825

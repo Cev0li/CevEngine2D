@@ -39,3 +39,12 @@ C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\rp
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\ground_tiles.xnb
 C:\Users\markc\source\repos\monogameTutorial\obj\Debug\net6.0-windows\monogameTutorial.sourcelink.json
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\archer.xnb
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\Fireball_Effect_01.xnb
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\FollowCamera.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\GameTimer.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\Globals.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\TileLayer.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Fireball.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Projectile.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Player.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Unit.cs

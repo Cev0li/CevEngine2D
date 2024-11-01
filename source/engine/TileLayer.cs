@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿#region
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
@@ -11,20 +12,23 @@ using System.Reflection;
 using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
+#endregion
 
-namespace monogameTutorial
+namespace monogameTutorial.source.engine
 {
-    public class TileLayer {
+    public class TileLayer
+    {
 
-        private String filePath;
+        private string filePath;
         public Dictionary<Vector2, int> tileMap;
         private Texture2D tileSheet;
         private int tileSheetY;
 
-        public TileLayer(String filePath, Texture2D tileSheet, int sheetY) { 
+        public TileLayer(string filePath, Texture2D tileSheet, int sheetY)
+        {
             this.filePath = filePath;
             this.tileSheet = tileSheet;
-            this.tileSheetY = sheetY; //sheets width in tiles
+            tileSheetY = sheetY; //sheets width in tiles
             loadMap(filePath);
         }
 
@@ -32,17 +36,22 @@ namespace monogameTutorial
          * CSV number corresponds to the position on sprite sheet
          * Method treats the CSV as 2D array.
          * Loads Dictionary with '2D array' positining Key to tilesheet location value stored as int */
-        private void loadMap(string filepath) {
+        private void loadMap(string filepath)
+        {
             Dictionary<Vector2, int> result = new();
             StreamReader reader = new(filepath);
 
             int y = 0;
             string line;
-            while ((line = reader.ReadLine()) != null) {
+            while ((line = reader.ReadLine()) != null)
+            {
                 string[] items = line.Split(',');
-                for (int x = 0; x < items.Length; x++) {
-                    if (int.TryParse(items[x], out int value)) {
-                        if (value > -1) {                           // check for empty space left on screen by incomplete tile map
+                for (int x = 0; x < items.Length; x++)
+                {
+                    if (int.TryParse(items[x], out int value))
+                    {
+                        if (value > -1)
+                        {                           // check for empty space left on screen by incomplete tile map
                             result[new Vector2(x, y)] = value;
                         }
                     }
@@ -53,7 +62,8 @@ namespace monogameTutorial
         }
 
         //DRAW MAP LAYER
-        public void Draw(SpriteBatch spriteBatch, Vector2 offset) {
+        public void Draw(Vector2 offset)
+        {
             int srcRectX;
             int srcRectY;
             double srcRectYDouble;
@@ -62,7 +72,8 @@ namespace monogameTutorial
              * Tilesize currently hardcoded. TODO: add tilesize variable to constructor for dynamic tile map loading 
              * Source rect logic divides tile position by row and column lengths to calculate pixel dimensions 
              * for sprite sheet crop */
-            foreach (var item in tileMap) {
+            foreach (var item in tileMap)
+            {
                 Rectangle dest = new(
                     (int)item.Key.X * 32 + (int)offset.X,
                     (int)item.Key.Y * 32 + (int)offset.Y,
@@ -71,17 +82,17 @@ namespace monogameTutorial
                 );
 
                 //Crop map tile from sprite sheet. TODO: Optomize draw method by loading tilesheet into Dictionary with Vector2, Rectangle KVP
-                srcRectX = (item.Value % tileSheetY) * 32; ;
-                srcRectYDouble = (item.Value / tileSheetY);
+                srcRectX = item.Value % tileSheetY * 32; ;
+                srcRectYDouble = item.Value / tileSheetY;
                 srcRectYDouble = Math.Ceiling(srcRectYDouble) * 32;
                 srcRectY = (int)srcRectYDouble;
                 Rectangle src = new Rectangle(
                     srcRectX,
-                    (int)srcRectY,
+                    srcRectY,
                     32,
                     32
                     );
-                spriteBatch.Draw(tileSheet, dest, src, Color.White);
+                Globals.spriteBatch.Draw(tileSheet, dest, src, Color.White);
             }
         }
     }
