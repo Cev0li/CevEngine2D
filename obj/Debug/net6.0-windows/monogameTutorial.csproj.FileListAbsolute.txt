@@ -48,3 +48,5 @@ C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\wor
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Projectile.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Player.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Unit.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALL.xnb
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALLS.xnb

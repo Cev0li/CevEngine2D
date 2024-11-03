@@ -38,10 +38,10 @@ namespace monogameTutorial.source.world.units {
             }
             if (Globals.mouse.LeftClick()) {
                 GameGlobals.PassProjectile(new Fireball(
-                    "Fireball_Effect_01",
+                    "FIREBALLS",
                     new Vector2(_pos.X + _dRect.Width / 2, _pos.Y + _dRect.Height / 2),
-                    new Vector2(100, 100),
-                    new Rectangle(0, 0, 150, 150), 
+                    new Vector2(25, 25),
+                    new Rectangle(0, 0, 16, 16), 
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
                     1000)
                 );
