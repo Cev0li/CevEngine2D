@@ -1,5 +1,6 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
 "C:/Users/markc/source/repos/monogameTutorial/Content/archer.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/archer.xnb","TextureProcessor","Texture2DContent",23948,2073685,0.1688479
+"C:/Users/markc/source/repos/monogameTutorial/Content/circle.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/circle.xnb","TextureProcessor","Texture2DContent",4653,65621,0.1213255
 "C:/Users/markc/source/repos/monogameTutorial/Content/Fireball_Effect_01.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/Fireball_Effect_01.xnb","TextureProcessor","Texture2DContent",12769,90085,0.1160788
 "C:/Users/markc/source/repos/monogameTutorial/Content/FIREBALL.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/FIREBALL.xnb","TextureProcessor","Texture2DContent",196,1109,0.1122624
 "C:/Users/markc/source/repos/monogameTutorial/Content/FIREBALLS.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/FIREBALLS.xnb","TextureProcessor","Texture2DContent",159,1109,0.0920202

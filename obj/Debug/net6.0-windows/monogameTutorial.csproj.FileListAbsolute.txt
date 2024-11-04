@@ -45,8 +45,15 @@ C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\eng
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\Globals.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\TileLayer.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Fireball.cs
-C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Projectile.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Player.cs
-C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Unit.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALL.xnb
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALLS.xnb
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\BasicUnit.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\archer.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALL.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALLS.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\Fireball_Effect_01.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\ground_tiles.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\rpgcritters2.png
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\Projectile.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\circle.xnb

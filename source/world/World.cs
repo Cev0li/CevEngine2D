@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using monogameTutorial.source.engine;
 using monogameTutorial.source.engine.input;
+using monogameTutorial.source.world;
 using monogameTutorial.source.world.projectiles;
 using monogameTutorial.source.world.units;
 using System;
@@ -14,13 +15,16 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.world {
+
+namespace monogameTutorial.source.world
+{
     internal class World {
         public Player player; //TODO;handle collision logic so this is private
         private List<Projectile> projectiles = new();
-
+        private List<Mob> mobs = new();
+        private List<SpawnPoint> spawnPoints = new();
         public World() {
-
+            //currently hardcoded scaling etc...
             player = new(
                 "rpgCritters2",
                 new Vector2(
@@ -31,7 +35,10 @@ namespace monogameTutorial.source.world {
                 new Vector2(200, 200)
             );
 
-            GameGlobals.PassProjectile = AddProjectile;
+            spawnPoints.Add(new SpawnPoint(new Vector2(680, 200)));
+
+            GameGlobals.PassProjectile = AddProjectile; //Add to projectiles list. Manage all projectiles in game.
+            GameGlobals.PassMob = AddMob; //Add to mob list. Manage all mobs in game.
         }
 
         public void Update(float[] playerVelocity) {
@@ -39,13 +46,31 @@ namespace monogameTutorial.source.world {
             player.Update(playerVelocity);
 
             for (int i = 0; i < projectiles.Count; i++) {
-                projectiles[i].Update(null);
+                //projectiles[i].Update(mobs.ToList<Unit>());
+                projectiles[i].Update(mobs.Cast<Unit>().ToList());
 
                 if (projectiles[i].Done) {
                     projectiles.RemoveAt(i);
                     i--;
                 }
             }
+
+            for (int i = 0; i < spawnPoints.Count; i++) {
+                spawnPoints[i].Update();
+            }
+
+            for (int i = 0; i < mobs.Count; i++) {
+                mobs[i].Update(player);
+
+                if (mobs[i].Dead) {
+                    mobs.RemoveAt(i);
+                    i--;
+                }
+            }
+        }
+    
+        public virtual void AddMob(object mob) {
+            mobs.Add((Mob)mob);
         }
 
         public virtual void AddProjectile(object projectile) {
@@ -57,6 +82,14 @@ namespace monogameTutorial.source.world {
 
             for (int i = 0; i < projectiles.Count; i++) {
                 projectiles[i].Draw();
+            }
+
+            for (int i = 0; i < spawnPoints.Count; i++) {
+                spawnPoints[i].Draw();
+            }
+
+            for (int i = 0; i < mobs.Count; i++) {
+                mobs[i].Draw();
             }
         }
 

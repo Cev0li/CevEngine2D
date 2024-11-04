@@ -28,5 +28,7 @@
     10/31/24 CEV- Implementd World class for a more readable main class. Split the drect argument to the unit class into position and size, Rectangle is instantiated in
                     the constructor. This creates more readable code for sprite rotations. Rotations necessary to fire projectiles. Added Projectile list to world class
                     to maintain all fired projectiles in game and added player ability to shoot a fireball on click.
+    11/3/24 CEV- Projectile rotates. Added Mob, Imp, SpawnPoint classes. Unit now has Dead bool to signify its existence in game. Dies on hit of projectile. World Maintains 
+                    list of spawn points and mobs. Spawn points passes mobs into mob list. 
  
  */

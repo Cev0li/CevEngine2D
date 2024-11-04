@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
 using monogameTutorial.source.engine.input;
 using monogameTutorial.source.world.projectiles;
 using System;
@@ -12,23 +11,21 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 #endregion
-//TODO: Add source rectangle firld to handle sprite sheets
-namespace monogameTutorial.source.world.units
-{
-    public class Unit
-    {
+
+namespace monogameTutorial.source.engine {
+    public class BasicUnit {
         protected Texture2D _texture;
+        protected Vector2 _pos, _size;
+        protected Rectangle _dRect, _sRect; //Destination rectangl/sprite scale, Sprite sheet crop
+        //Properties
         public Texture2D SpriteTexture { get { return _texture; } }
-        protected Vector2 _pos;
-        protected Vector2 _size;
-        protected Rectangle _dRect; //Destination rectangle/sprite scale
+        public Vector2 POS { get { return _pos; } }
+        public Vector2 Size { get { return _size; } }
         public Rectangle DRect { get { return _dRect; } set { _dRect = value; } }
-        protected Rectangle _sRect; //Destination rectangle/sprite scale
         public Rectangle SRect { get { return _sRect; } set { _sRect = value; } }
 
 
-        public Unit(string texture, Vector2 pos, Vector2 size, Rectangle sRect)
-        {
+        public BasicUnit(string texture, Vector2 pos, Vector2 size, Rectangle sRect) {
             _texture = Globals.content.Load<Texture2D>(texture);
             _pos = pos;
             _size = size;
@@ -36,11 +33,16 @@ namespace monogameTutorial.source.world.units
             _sRect = sRect;
         }
 
-        public virtual void Update() { }
+        public virtual void Update() { 
+            _dRect = new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y); 
+        }
 
-        public virtual void Draw()
-        {
-            Globals.spriteBatch.Draw(_texture, _dRect, Color.White);
+        public virtual void Draw() {
+            Globals.spriteBatch.Draw(
+                _texture, 
+                new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y),
+                _sRect,
+                Color.White);
         }
     }
 }

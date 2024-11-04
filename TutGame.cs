@@ -77,7 +77,7 @@ namespace monogameTutorial {
             Globals.mouse.Update();
             Globals.gameTime = gameTime;
 
-            float[] playerVelocity = { 1.5f, 1.5f, 1.5f, 1.5f };
+            float[] playerVelocity = { 2f, 2f, 2f, 2f };
             //baseline player movement resets every update. Will change based on game mechanics. Best way currently is to refresh state every frame.
 
             count++; //begining to experiment with frame counting for animations

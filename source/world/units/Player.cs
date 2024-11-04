@@ -13,7 +13,8 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.world.units {
+namespace monogameTutorial.source.world.units
+{
     internal class Player : Unit {
         private Vector2 _mapPosition; //offset of map in relationship to centered player. Controls camera movement to simulate player movement/ player start on map
         public Vector2 mapPosition { get { return _mapPosition; } }
@@ -38,14 +39,13 @@ namespace monogameTutorial.source.world.units {
             }
             if (Globals.mouse.LeftClick()) {
                 GameGlobals.PassProjectile(new Fireball(
-                    "FIREBALLS",
+                    "FIREBALL",
                     new Vector2(_pos.X + _dRect.Width / 2, _pos.Y + _dRect.Height / 2),
                     new Vector2(25, 25),
                     new Rectangle(0, 0, 16, 16), 
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
-                    1000)
+                    10000)
                 );
-                Debug.WriteLine(_pos.X + _dRect.Width / 2);
             }
         }
 
