@@ -17,9 +17,9 @@ namespace monogameTutorial.source.world.units
 {
     internal class Player : Unit {
         private Vector2 _mapPosition; //offset of map in relationship to centered player. Controls camera movement to simulate player movement/ player start on map
-        public Vector2 mapPosition { get { return _mapPosition; } }
+        public Vector2 MapPosition { get { return _mapPosition; } }
+        public Vector2 track = Vector2.Zero;
 
-        //constructor takes array of 4 values used to crop a sprite sheet.
         public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect, Vector2 position) : base(texture, pos, size, sRect) {
             _mapPosition = position; //Camera offset variable. This locates player at specific point on map
         }

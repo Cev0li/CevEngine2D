@@ -85,11 +85,12 @@ namespace monogameTutorial.source.world
             }
 
             for (int i = 0; i < spawnPoints.Count; i++) {
-                spawnPoints[i].Draw();
+                spawnPoints[i].Draw(GameGlobals.camera.Position);
             }
 
             for (int i = 0; i < mobs.Count; i++) {
                 mobs[i].Draw();
+                Debug.WriteLine(mobs[i].POS + " " + mobs[i].DRect.X);
             }
         }
 

@@ -24,5 +24,9 @@ namespace monogameTutorial.source.world.units.mobs {
         public override void Update(Player player) {
             base.Update(player);
         }
+
+        public override void Draw() {
+            base.Draw();
+        }
     }
 }

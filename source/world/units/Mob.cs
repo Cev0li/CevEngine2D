@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework.Input;
 using monogameTutorial.source.engine;
 using monogameTutorial.source.engine.input;
 using monogameTutorial.source.world.projectiles;
+using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -27,16 +28,11 @@ namespace monogameTutorial.source.world.units
         }
 
         public virtual void AI(Player player) {
-            _pos += Globals.RadialMovement(player.POS, _pos, _speed);
+            _pos += Globals.RadialMovement(player.MapPosition + player.track, _pos, _speed);
         }
 
-        //public virtual void Draw() {
-        //    Globals.spriteBatch.Draw(
-        //        SpriteTexture,
-        //        DRect,
-        //        _sRect,
-        //        Color.White
-        //    );
-        //}
+        public override void Draw() {
+            base.Draw();
+        }
     }
 }

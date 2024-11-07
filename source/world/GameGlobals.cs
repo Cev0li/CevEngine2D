@@ -19,5 +19,8 @@ namespace monogameTutorial.source.world {
     internal class GameGlobals {
         public static PassObject PassProjectile; //initalized in World class
         public static PassObject PassMob; //initalized in World class
+
+        public static FollowCamera camera; //allows for viewport centered player. Translates player movement to the map
+        public static int tileSize;
     }
 }

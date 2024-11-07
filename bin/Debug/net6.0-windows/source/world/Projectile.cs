@@ -17,13 +17,13 @@ namespace monogameTutorial.source.world
     internal class Projectile : Unit
     {
         protected Vector2 _direction, _location, _distance;
-        protected float rotation, _speed;
+        protected float rotation;
         protected bool _done;
         protected GameTimer _timer;
         //Properties
         public bool Done { get { return _done; } }
 
-        //TODO: Add owner  variable and replace hardcoded center screen logic with owners dRect
+        //TODO: Add owner variable and replace hardcoded center screen logic with owners dRect
         public Projectile(string texture, Vector2 pos, Vector2 size, Rectangle sRect, Vector2 target, int setTimer) : base(texture, pos, size, sRect)
         {
             _speed = 5.0f;
@@ -69,15 +69,19 @@ namespace monogameTutorial.source.world
             return false;
         }
 
-        public override void Update() {
-            base.Update();
-        }
+        //public override void Update() {
+        //    base.Update();
+        //}
 
         public override void Draw()
         {
             Globals.spriteBatch.Draw(
                 _texture,
-                new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y),
+                new Rectangle(
+                    (int)(_pos.X - _size.X / 2), 
+                    (int)(_pos.Y - _size.Y / 2), 
+                    (int)Size.X, 
+                    (int)Size.Y),
                 _sRect,
                 Color.White,
                 rotation,

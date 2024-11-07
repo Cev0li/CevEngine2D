@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
+using monogameTutorial.source.world;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -75,22 +76,22 @@ namespace monogameTutorial.source.engine
             foreach (var item in tileMap)
             {
                 Rectangle dest = new(
-                    (int)item.Key.X * 32 + (int)offset.X,
-                    (int)item.Key.Y * 32 + (int)offset.Y,
-                    32,
-                    32
+                    (int)item.Key.X * GameGlobals.tileSize + (int)offset.X,
+                    (int)item.Key.Y * GameGlobals.tileSize + (int)offset.Y,
+                    GameGlobals.tileSize,
+                    GameGlobals.tileSize
                 );
 
                 //Crop map tile from sprite sheet. TODO: Optomize draw method by loading tilesheet into Dictionary with Vector2, Rectangle KVP
                 srcRectX = item.Value % tileSheetY * 32; ;
                 srcRectYDouble = item.Value / tileSheetY;
-                srcRectYDouble = Math.Ceiling(srcRectYDouble) * 32;
+                srcRectYDouble = Math.Ceiling(srcRectYDouble) * GameGlobals.tileSize;
                 srcRectY = (int)srcRectYDouble;
                 Rectangle src = new Rectangle(
                     srcRectX,
                     srcRectY,
-                    32,
-                    32
+                    GameGlobals.tileSize,
+                    GameGlobals.tileSize
                     );
                 Globals.spriteBatch.Draw(tileSheet, dest, src, Color.White);
             }

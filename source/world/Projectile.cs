@@ -17,7 +17,7 @@ namespace monogameTutorial.source.world
     internal class Projectile : Unit
     {
         protected Vector2 _direction, _location, _distance;
-        protected float rotation, _speed;
+        protected float rotation;
         protected bool _done;
         protected GameTimer _timer;
         //Properties
@@ -69,15 +69,19 @@ namespace monogameTutorial.source.world
             return false;
         }
 
-        public override void Update() {
-            base.Update();
-        }
+        //public override void Update() {
+        //    base.Update();
+        //}
 
         public override void Draw()
         {
             Globals.spriteBatch.Draw(
                 _texture,
-                new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y),
+                new Rectangle(
+                    (int)(_pos.X - _size.X / 2), 
+                    (int)(_pos.Y - _size.Y / 2), 
+                    (int)Size.X, 
+                    (int)Size.Y),
                 _sRect,
                 Color.White,
                 rotation,

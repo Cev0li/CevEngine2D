@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace monogameTutorial.source.engine
 {
-    internal class FollowCamera
+    public class FollowCamera
     {
 
         private Vector2 _position; //Set by player position field for map movement

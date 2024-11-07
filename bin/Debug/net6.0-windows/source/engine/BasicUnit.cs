@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using monogameTutorial.source.engine.input;
+using monogameTutorial.source.world;
 using monogameTutorial.source.world.projectiles;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Reflection.Emit;
 #endregion
 
 namespace monogameTutorial.source.engine {
-    public class BasicUnit {
+    internal class BasicUnit {
         protected Texture2D _texture;
         protected Vector2 _pos, _size;
         protected Rectangle _dRect, _sRect; //Destination rectangl/sprite scale, Sprite sheet crop
@@ -29,18 +30,46 @@ namespace monogameTutorial.source.engine {
             _texture = Globals.content.Load<Texture2D>(texture);
             _pos = pos;
             _size = size;
-            _dRect = new Rectangle((int)pos.X, (int)pos.Y, (int)size.X, (int)size.Y);
+            _dRect = new Rectangle(
+                (int)(pos.X - size.X / 2), 
+                (int)(pos.Y - size.Y / 2), 
+                (int)size.X, 
+                (int)size.Y
+            );
             _sRect = sRect;
         }
 
         public virtual void Update() { 
-            _dRect = new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y); 
+            _dRect = new Rectangle(
+                (int)(_pos.X - _size.X / 2),
+                (int)(_pos.Y - _size.Y / 2),
+                (int)_size.X,
+                (int)_size.Y
+            );
         }
 
         public virtual void Draw() {
             Globals.spriteBatch.Draw(
-                _texture, 
-                new Rectangle((int)_pos.X, (int)_pos.Y, (int)Size.X, (int)Size.Y),
+                _texture,
+                _dRect = new Rectangle(
+                    (int)(_pos.X - _size.X / 2) + (int)GameGlobals.camera.Position.X,
+                    (int)(_pos.Y - _size.Y / 2) + (int)GameGlobals.camera.Position.Y,
+                    (int)_size.X,
+                    (int)_size.Y
+                ),
+                _sRect,
+                Color.White);
+        }
+
+        public virtual void Draw(Vector2 offset) {
+            Globals.spriteBatch.Draw(
+                _texture,
+                _dRect = new Rectangle(
+                    (int)((_pos.X - _size.X / 2) + offset.X),
+                    (int)((_pos.Y - _size.Y / 2) + offset.Y),
+                    (int)_size.X,
+                    (int)_size.Y
+                ),
                 _sRect,
                 Color.White);
         }

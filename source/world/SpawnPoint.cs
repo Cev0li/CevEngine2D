@@ -20,14 +20,14 @@ namespace monogameTutorial.source.world.units {
     internal class SpawnPoint : BasicUnit {
 
         protected bool _dead;
-        protected float _hitDistance;
+        //protected float _hitDistance;
         protected GameTimer _spawnTimer = new(2000);
         //Properties
         public bool Dead { get { return _dead; } set { _dead = value; } }
 
         public SpawnPoint(Vector2 pos) : base("circle", pos, new Vector2(75, 75), new Rectangle(0,0,128, 128)) {
             _dead = false;
-            _hitDistance = 35f;
+            //_hitDistance = 35f;
         }
 
         public virtual void GetHit() {
@@ -40,6 +40,7 @@ namespace monogameTutorial.source.world.units {
                 SpawnMob();
                 _spawnTimer.ResetToZero();
             }
+            base.Update();
         }
 
         public virtual void SpawnMob() {
