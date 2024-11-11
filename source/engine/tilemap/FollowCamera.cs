@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace monogameTutorial.source.engine
+namespace cevEngine2D.source.engine.tilemap
 {
     public class FollowCamera
     {

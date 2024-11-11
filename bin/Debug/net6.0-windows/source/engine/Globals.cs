@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine.input;
+using cevEngine2D.source.engine.input;
 using SharpDX.Direct3D11;
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace monogameTutorial {
+namespace cevEngine2D {
     public delegate void PassObject(object i);
     public delegate object PassObjectAndReturn(object i);
 

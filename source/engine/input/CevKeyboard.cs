@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace monogameTutorial.source.engine.input {
+namespace cevEngine2D.source.engine.input {
     public class CevKeyboard {
         public KeyboardState newKeyboard, oldKeyboard;
 
         public List<CevKey> pressedKeys = new List<CevKey>(), previousPressedKeys = new List<CevKey>();
+        public List<String> pressedKeyString = new();
 
         public CevKeyboard() { }
 

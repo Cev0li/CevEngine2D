@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System;
 
-namespace monogameTutorial.source.engine {
+namespace cevEngine2D.source.engine {
     public class GameTimer {
         private int _mSec;
         public int MilliSeconds { get { return _mSec; } }

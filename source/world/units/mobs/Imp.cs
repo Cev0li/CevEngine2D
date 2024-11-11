@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world.projectiles;
+using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.world.projectiles;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.world.units.mobs {
+namespace cevEngine2D.source.world.units.mobs {
 
     internal class Imp : Mob {
         //constructor takes array of 4 values used to crop a sprite sheet.

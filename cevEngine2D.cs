@@ -2,11 +2,13 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world;
-using monogameTutorial.source.world.projectiles;
-using monogameTutorial.source.world.units;
+using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.animate;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.engine.tilemap;
+using cevEngine2D.source.world;
+using cevEngine2D.source.world.projectiles;
+using cevEngine2D.source.world.units;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,8 +17,9 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial {
-    public class TutGame : Game {
+namespace cevEngine2D
+{
+    public class cevEngine2D : Game {
         private GraphicsDeviceManager _graphics;
 
         private World world;
@@ -26,7 +29,7 @@ namespace monogameTutorial {
 
         private Texture2D rectangleTexture; //debug variable for rectHollow method
 
-        public TutGame() {
+        public cevEngine2D() {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
@@ -175,6 +178,8 @@ namespace monogameTutorial {
 
             //Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
             DrawRectHollow(Globals.spriteBatch, world.player.DRect, 4);
+
+
 
             Globals.spriteBatch.End();
             base.Draw(gameTime);

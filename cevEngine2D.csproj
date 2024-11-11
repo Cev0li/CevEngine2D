@@ -49,7 +49,7 @@
     <Folder Include="Content\bin\Windows\Content\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="source\engine\FollowCamera.cs">
+    <Compile Update="source\engine\tilemap\FollowCamera.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="source\engine\GameTimer.cs">
@@ -58,7 +58,7 @@
     <Compile Update="source\engine\Globals.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="source\engine\TileLayer.cs">
+    <Compile Update="source\engine\tilemap\TileLayer.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="source\world\units\Player.cs">

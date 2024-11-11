@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world;
-using monogameTutorial.source.world.projectiles;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.world;
+using cevEngine2D.source.world.projectiles;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -13,9 +13,9 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.engine {
+namespace cevEngine2D.source.engine {
     internal class BasicUnit {
-        protected Texture2D _texture;
+        internal Texture2D _texture;
         protected Vector2 _pos, _size;
         protected Rectangle _dRect, _sRect; //Destination rectangl/sprite scale, Sprite sheet crop
         //Properties

@@ -40,10 +40,8 @@ C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\gr
 C:\Users\markc\source\repos\monogameTutorial\obj\Debug\net6.0-windows\monogameTutorial.sourcelink.json
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\archer.xnb
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\Fireball_Effect_01.xnb
-C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\FollowCamera.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\GameTimer.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\Globals.cs
-C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\TileLayer.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\projectiles\Fireball.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\units\Player.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\FIREBALL.xnb
@@ -57,3 +55,5 @@ C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\gr
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\rpgcritters2.png
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\world\Projectile.cs
 C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\Content\circle.xnb
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\tilemap\TileLayer.cs
+C:\Users\markc\source\repos\monogameTutorial\bin\Debug\net6.0-windows\source\engine\tilemap\FollowCamera.cs

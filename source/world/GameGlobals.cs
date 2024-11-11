@@ -2,11 +2,11 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world;
-using monogameTutorial.source.world.projectiles;
-using monogameTutorial.source.world.units;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.engine.tilemap;
+using cevEngine2D.source.world;
+using cevEngine2D.source.world.projectiles;
+using cevEngine2D.source.world.units;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -15,7 +15,8 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.world {
+namespace cevEngine2D.source.world
+{
     internal class GameGlobals {
         public static PassObject PassProjectile; //initalized in World class
         public static PassObject PassMob; //initalized in World class

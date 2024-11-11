@@ -30,6 +30,7 @@
                     to maintain all fired projectiles in game and added player ability to shoot a fireball on click.
     11/3/24 CEV- Projectile rotates. Added Mob, Imp, SpawnPoint classes. Unit now has Dead bool to signify its existence in game. Dies on hit of projectile. World Maintains 
                     list of spawn points and mobs. Spawn points passes mobs into mob list. 
-    11/5/24 CEV- Basic units and all implementations draw with position in center of dRect.
+    11/5/24 CEV- Basic units and all children draw with position in center of dRect.
+    11/7/24 CEV- Animation class added
  
  */

@@ -2,45 +2,99 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world.projectiles;
+using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.world.projectiles;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using cevEngine2D.source.engine.animate;
 #endregion
-
-namespace monogameTutorial.source.world.units
+//TODO: State machine
+namespace cevEngine2D.source.world.units
 {
     internal class Player : Unit {
         private Vector2 _mapPosition; //offset of map in relationship to centered player. Controls camera movement to simulate player movement/ player start on map
+        private AnimationManager animations;
+        private SpriteEffects flipEffect;
+
         public Vector2 MapPosition { get { return _mapPosition; } }
-        public Vector2 track = Vector2.Zero;
 
         public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect, Vector2 position) : base(texture, pos, size, sRect) {
             _mapPosition = position; //Camera offset variable. This locates player at specific point on map
+            flipEffect = SpriteEffects.None;
+            
+            animations = new AnimationManager(this);
+            animations.AddAnimation("W", 5, 72, false, false, new Vector2(0, 0));
+            animations.AddAnimation("A", 5, 72, false, false, new Vector2(2, 0));
+            animations.AddAnimation("D", 5, 72, false, false, new Vector2(2, 0));
+            animations.AddAnimation("S", 5, 72, false, false, new Vector2(4, 0));
+            animations.AddAnimation("WD", 5, 72, false, false, new Vector2(1, 0));
+            animations.AddAnimation("WA", 5, 72, false, false, new Vector2(1, 0));
+            animations.AddAnimation("SD", 5, 72, false, false, new Vector2(3, 0));
+            animations.AddAnimation("SA", 5, 72, false, false, new Vector2(3, 0));
         }
 
         public void Update(float[] velocity) {
-            if (Globals.keyboard.GetPress("A")) {
-                _mapPosition.X -= velocity[1];
-            }
-            if (Globals.keyboard.GetPress("D")) {
-                _mapPosition.X += velocity[3];
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.W)) {
-                _mapPosition.Y -= velocity[2];
-            }
-            if (Keyboard.GetState().IsKeyDown(Keys.S)) {
-                _mapPosition.Y += velocity[0];
+            bool diagnolMovement = false;
+            List<String> keyStrings = Globals.keyboard.pressedKeys.Select(key => key.key).ToList();
+            string[] diagnolKeyTargets = { "W", "A", "S", "D"};
+            diagnolMovement = keyStrings.Intersect(diagnolKeyTargets).Count() > 1;
+
+
+            if (diagnolMovement) {
+                if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("D")) {
+                    _mapPosition += new Vector2(velocity[1], -velocity[3]);
+                    animations.Update("WD");
+                    flipEffect = SpriteEffects.None;
+                }
+
+                if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("A")) {
+                    _mapPosition += new Vector2 (-velocity[1], -velocity[2]);
+                    animations.Update("WA");
+                    flipEffect = SpriteEffects.FlipHorizontally;
+                }
+
+                if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("D")) {
+                    _mapPosition += new Vector2(velocity[0], velocity[3]);
+                    animations.Update("SD");
+                    flipEffect = SpriteEffects.None;
+                }
+
+                if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("A")) {
+                    _mapPosition += new Vector2(-velocity[0], velocity[1]);
+                    animations.Update("SA");
+                    flipEffect = SpriteEffects.FlipHorizontally;
+                }
+            } else {
+                if (Globals.keyboard.GetPress("A")) {
+                    _mapPosition.X -= velocity[1];
+                    animations.Update("A");
+                    flipEffect = SpriteEffects.FlipHorizontally;
+                }
+                if (Globals.keyboard.GetPress("D")) {
+                    _mapPosition.X += velocity[3];
+                    animations.Update("D");
+                    flipEffect = SpriteEffects.None;
+                }
+                if (Globals.keyboard.GetPress("W")) {
+                    _mapPosition.Y -= velocity[2];
+                    animations.Update("W");
+                    flipEffect = SpriteEffects.None;
+                }
+                if (Globals.keyboard.GetPress("S")) {
+                    _mapPosition.Y += velocity[0];
+                    animations.Update("S");
+                    flipEffect = SpriteEffects.None;
+                }
             }
             if (Globals.mouse.LeftClick()) {
                 GameGlobals.PassProjectile(new Fireball(
                     "FIREBALL",
-                    new Vector2(_pos.X + _dRect.Width / 2, _pos.Y + _dRect.Height / 2),
+                    new Vector2(_pos.X, _pos.Y),
                     new Vector2(25, 25),
                     new Rectangle(0, 0, 16, 16), 
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
@@ -54,7 +108,11 @@ namespace monogameTutorial.source.world.units
                 SpriteTexture,
                 DRect,
                 _sRect,
-                Color.White
+                Color.White,
+                0f,
+                Vector2.Zero,
+                flipEffect,
+                0f
             );
         }
     }

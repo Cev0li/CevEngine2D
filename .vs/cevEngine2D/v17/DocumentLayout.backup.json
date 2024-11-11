@@ -1,0 +1,259 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\spawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\spawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\animate\\animationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\animate\\animationmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\animate\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\animate\\animation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\input\\cevkeyboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\input\\cevkeyboard.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\input\\cevkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\input\\cevkey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\tilemap\\tilelayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\tilemap\\tilelayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\units\\mobs\\imp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\mobs\\imp.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\units\\mob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\mob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\engine\\input\\cevmousecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\input\\cevmousecontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\monogametutorial\\source\\world\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 115,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Imp.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\mobs\\Imp.cs",
+              "RelativeDocumentMoniker": "source\\world\\units\\mobs\\Imp.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\mobs\\Imp.cs",
+              "RelativeToolTip": "source\\world\\units\\mobs\\Imp.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T03:15:03.819Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Mob.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\Mob.cs",
+              "RelativeDocumentMoniker": "source\\world\\units\\Mob.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\Mob.cs",
+              "RelativeToolTip": "source\\world\\units\\Mob.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB4AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T03:15:04.205Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BasicUnit.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\BasicUnit.cs",
+              "RelativeDocumentMoniker": "source\\engine\\BasicUnit.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\BasicUnit.cs",
+              "RelativeToolTip": "source\\engine\\BasicUnit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T02:07:38.736Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "World.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\World.cs",
+              "RelativeDocumentMoniker": "source\\world\\World.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\World.cs",
+              "RelativeToolTip": "source\\world\\World.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T01:52:31.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AnimationManager.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\animate\\AnimationManager.cs",
+              "RelativeDocumentMoniker": "source\\engine\\animate\\AnimationManager.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\animate\\AnimationManager.cs",
+              "RelativeToolTip": "source\\engine\\animate\\AnimationManager.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwCEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T01:44:17.889Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Unit.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\Unit.cs",
+              "RelativeDocumentMoniker": "source\\world\\Unit.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\Unit.cs",
+              "RelativeToolTip": "source\\world\\Unit.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-07T02:08:36.51Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 205,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SpawnPoint.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\SpawnPoint.cs",
+              "RelativeDocumentMoniker": "source\\world\\SpawnPoint.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\SpawnPoint.cs",
+              "RelativeToolTip": "source\\world\\SpawnPoint.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABgAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T04:07:40.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TileLayer.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\tilemap\\TileLayer.cs",
+              "RelativeDocumentMoniker": "source\\engine\\tilemap\\TileLayer.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\tilemap\\TileLayer.cs",
+              "RelativeToolTip": "source\\engine\\tilemap\\TileLayer.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-11T02:44:49.44Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "CevMouseControl.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevMouseControl.cs",
+              "RelativeDocumentMoniker": "source\\engine\\input\\CevMouseControl.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevMouseControl.cs",
+              "RelativeToolTip": "source\\engine\\input\\CevMouseControl.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T01:43:08.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\Player.cs",
+              "RelativeDocumentMoniker": "source\\world\\units\\Player.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\world\\units\\Player.cs",
+              "RelativeToolTip": "source\\world\\units\\Player.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAowDEAAAA+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T01:53:10.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Animation.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\animate\\Animation.cs",
+              "RelativeDocumentMoniker": "source\\engine\\animate\\Animation.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\animate\\Animation.cs",
+              "RelativeToolTip": "source\\engine\\animate\\Animation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-08T01:32:08.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CevKeyboard.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevKeyboard.cs",
+              "RelativeDocumentMoniker": "source\\engine\\input\\CevKeyboard.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevKeyboard.cs",
+              "RelativeToolTip": "source\\engine\\input\\CevKeyboard.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAADMAAABbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T02:12:43.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CevKey.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevKey.cs",
+              "RelativeDocumentMoniker": "source\\engine\\input\\CevKey.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\source\\engine\\input\\CevKey.cs",
+              "RelativeToolTip": "source\\engine\\input\\CevKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-09T02:23:10.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "cevEngine2D.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\cevEngine2D.cs",
+              "RelativeDocumentMoniker": "cevEngine2D.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\cevEngine2D.cs",
+              "RelativeToolTip": "cevEngine2D.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-08T00:59:34.81Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

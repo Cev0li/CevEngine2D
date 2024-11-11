@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "YZ67JdQn4h4=",
+  "dgSpecHash": "1jAyQ7VsWWg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\monogameTutorial.csproj",
+  "projectFilePath": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\cevEngine2D.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\markc\\.nuget\\packages\\libuv\\1.9.1\\libuv.1.9.1.nupkg.sha512",
     "C:\\Users\\markc\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\1.1.0\\microsoft.codeanalysis.analyzers.1.1.0.nupkg.sha512",

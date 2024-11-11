@@ -13,7 +13,7 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Microsoft.Xna.Framework.Media;
 #endregion
 
-namespace monogameTutorial.source.engine.input {
+namespace cevEngine2D.source.engine.input {
     public class CevMouseControl {
         public bool dragging, rightDrag;
 

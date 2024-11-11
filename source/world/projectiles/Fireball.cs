@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world;
+using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.world;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 #endregion
-namespace monogameTutorial.source.world.projectiles
+namespace cevEngine2D.source.world.projectiles
 {
     internal class Fireball : Projectile {
 

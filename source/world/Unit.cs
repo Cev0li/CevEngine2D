@@ -2,9 +2,9 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using monogameTutorial.source.engine;
-using monogameTutorial.source.engine.input;
-using monogameTutorial.source.world.projectiles;
+using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.input;
+using cevEngine2D.source.world.projectiles;
 using SharpDX.MediaFoundation;
 using System;
 using System.Collections.Generic;
@@ -14,10 +14,10 @@ using System.Linq;
 using System.Reflection.Emit;
 #endregion
 
-namespace monogameTutorial.source.world {
+namespace cevEngine2D.source.world {
     internal class Unit : BasicUnit {
 
-        protected bool _dead;
+        protected bool _dead, _diagnolLeft, _diagnolRight;
         protected float _speed/*, _hitDistance*/;
         //Properties
         public bool Dead { get { return _dead; } set { _dead = value; } }
@@ -25,6 +25,8 @@ namespace monogameTutorial.source.world {
 
         public Unit(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
             _dead = false;
+            _diagnolLeft = false;
+            _diagnolRight = false;
             _speed = 5f;
             //_hitDistance = 35f;
         }
