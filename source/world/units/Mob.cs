@@ -17,7 +17,6 @@ using System.Reflection.Emit;
 namespace cevEngine2D.source.world.units
 {
     internal class Mob : Unit {
-        //constructor takes array of 4 values used to crop a sprite sheet.
         public Mob(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
             
         }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/markc/source/repos/monogameTutorial/Content/rpgcritters2.png</SourceFile>
-  <SourceTime>2024-10-08T21:22:49.4784281-04:00</SourceTime>
-  <DestFile>C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/rpgcritters2.xnb</DestFile>
-  <DestTime>2024-10-11T21:35:14.7381185-04:00</DestTime>
+  <SourceFile>C:/Users/markc/source/repos/monogameTutorial/Content/WildOrcIdle.png</SourceFile>
+  <SourceTime>2024-11-11T09:16:05.4272411-05:00</SourceTime>
+  <DestFile>C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/Content/WildOrcIdle.xnb</DestFile>
+  <DestTime>2024-11-13T21:14:38.3926103-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2022-07-26T07:44:56-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

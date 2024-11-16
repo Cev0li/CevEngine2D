@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace cevEngine2D.source.engine.tilemap
+namespace cevEngine2D.source.engine
 {
     public class FollowCamera
     {

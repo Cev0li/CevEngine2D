@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
+using cevEngine2D.source.engine.tilemap.utils;
 #endregion
 
 namespace cevEngine2D
@@ -26,8 +26,12 @@ namespace cevEngine2D
         //private FollowCamera camera; //allows for viewport centered player. Translates player movement to the map
         private TileLayer baseLayer; //base display layer for sandbox map
         private TileLayer collisionLayer = null; //collision layer for sandbox map
+        private TileMap spawnMap;
 
         private Texture2D rectangleTexture; //debug variable for rectHollow method
+        //private Texture2D FPTiles;
+        //private Texture2D FPObj;
+        //private Texture2D WildOrcIdle;
 
         public cevEngine2D() {
             _graphics = new GraphicsDeviceManager(this);
@@ -49,6 +53,11 @@ namespace cevEngine2D
 
             Globals.keyboard = new CevKeyboard();
             Globals.mouse = new CevMouseControl();
+
+            //load spawn region map
+            ParseTiledJSON createSpawnMap = new("../../../data/spawn.tmj");
+            spawnMap = createSpawnMap.getMapObject();
+
 
             // load map base layer
             baseLayer = new(
@@ -160,24 +169,43 @@ namespace cevEngine2D
             GraphicsDevice.Clear(Color.Black);
             Globals.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
-            baseLayer.Draw(GameGlobals.camera.Position);
-            collisionLayer.Draw(GameGlobals.camera.Position);
-            world.Draw();
+            foreach (var layer in spawnMap.Layers) {
+                if (layer.Type == "tilelayer") {
+                    Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
+                    Tileset tileset = spawnMap.Tilesets.FirstOrDefault(set => set.Source == layer.SpriteSheet);
 
-            //Debug method for collision tile hitbox
-            foreach (var item in collisionLayer.tileMap) {
-                Vector2 position = item.Key;
-                Rectangle mapLocation = new(
-                        (int)position.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
-                        (int)position.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
-                        GameGlobals.tileSize,
-                        GameGlobals.tileSize
-                );
-                DrawRectHollow(Globals.spriteBatch, mapLocation, 4);
+                    foreach (Vector2 key in layer.MapMatrix.Keys) {
+                        Rectangle dRect = new Rectangle(
+                            (int)key.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
+                            (int)key.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
+                            GameGlobals.tileSize,
+                            GameGlobals.tileSize
+                            );
+                        Rectangle sRect = tileset.TilesetAtlas[layer.MapMatrix[key]];
+                        Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
+                    } 
+                }
             }
 
-            //Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
-            DrawRectHollow(Globals.spriteBatch, world.player.DRect, 4);
+            //baseLayer.Draw(GameGlobals.camera.Position);
+            //collisionLayer.Draw(GameGlobals.camera.Position);
+
+            world.Draw();
+
+            ////Debug method for collision tile hitbox
+            //foreach (var item in collisionLayer.tileMap) {
+            //    Vector2 position = item.Key;
+            //    Rectangle mapLocation = new(
+            //            (int)position.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
+            //            (int)position.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
+            //            GameGlobals.tileSize,
+            //            GameGlobals.tileSize
+            //    );
+            //    DrawRectHollow(Globals.spriteBatch, mapLocation, 4);
+            //}
+
+            ////Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
+            //DrawRectHollow(Globals.spriteBatch, world.player.DRect, 4);
 
 
 

@@ -6,11 +6,11 @@
   <SourceFiles>
     <File>C:/Users/markc/source/repos/monogameTutorial/Content/archer.png</File>
     <File>C:/Users/markc/source/repos/monogameTutorial/Content/circle.png</File>
-    <File>C:/Users/markc/source/repos/monogameTutorial/Content/Fireball_Effect_01.png</File>
     <File>C:/Users/markc/source/repos/monogameTutorial/Content/FIREBALL.png</File>
-    <File>C:/Users/markc/source/repos/monogameTutorial/Content/FIREBALLS.png</File>
+    <File>C:/Users/markc/source/repos/monogameTutorial/Content/FPObj.png</File>
+    <File>C:/Users/markc/source/repos/monogameTutorial/Content/FPTiles.png</File>
     <File>C:/Users/markc/source/repos/monogameTutorial/Content/ground_tiles.png</File>
-    <File>C:/Users/markc/source/repos/monogameTutorial/Content/rpgcritters2.png</File>
+    <File>C:/Users/markc/source/repos/monogameTutorial/Content/WildOrcIdle.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

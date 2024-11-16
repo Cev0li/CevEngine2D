@@ -90,9 +90,9 @@ namespace cevEngine2D.source.world
                 spawnPoints[i].Draw(GameGlobals.camera.Position);
             }
 
-            //for (int i = 0; i < mobs.Count; i++) {
-            //    mobs[i].Draw();
-            //}
+            for (int i = 0; i < mobs.Count; i++) {
+                mobs[i].Draw();
+            }
         }
 
     }

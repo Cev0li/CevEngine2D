@@ -16,10 +16,7 @@
     <None Remove="Content\File.spritefont" />
     <None Remove="Content\File.spritefont.bak" />
     <None Remove="Content\FIREBALL.png" />
-    <None Remove="Content\FIREBALLS.png" />
-    <None Remove="Content\Fireball_Effect_01.png" />
     <None Remove="Content\ground_tiles.png" />
-    <None Remove="Content\rpgcritters2.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\archer.png">
@@ -28,16 +25,7 @@
     <Content Include="Content\FIREBALL.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\FIREBALLS.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\Fireball_Effect_01.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="Content\ground_tiles.png">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Content\rpgcritters2.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -47,9 +35,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\bin\Windows\Content\" />
+    <Folder Include="source\engine\tilemap\utils\parseObjects\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="source\engine\tilemap\FollowCamera.cs">
+    <Compile Update="source\engine\FollowCamera.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="source\engine\GameTimer.cs">
