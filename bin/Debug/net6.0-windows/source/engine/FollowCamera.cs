@@ -14,7 +14,7 @@ namespace cevEngine2D.source.engine
             _position = position;
         }
 
-        public void Follow(Vector2 playerShift, Vector2 screenSize)
+        public void Follow(Vector2 playerShift)
         {
             _position = new Vector2(
                 -playerShift.X + Globals.viewport.Width / 2,

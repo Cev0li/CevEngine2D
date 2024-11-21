@@ -17,8 +17,7 @@ using System.Linq;
 using cevEngine2D.source.engine.tilemap.utils;
 #endregion
 
-namespace cevEngine2D
-{
+namespace cevEngine2D {
     public class cevEngine2D : Game {
         private GraphicsDeviceManager _graphics;
 
@@ -29,9 +28,6 @@ namespace cevEngine2D
         private TileMap spawnMap;
 
         private Texture2D rectangleTexture; //debug variable for rectHollow method
-        //private Texture2D FPTiles;
-        //private Texture2D FPObj;
-        //private Texture2D WildOrcIdle;
 
         public cevEngine2D() {
             _graphics = new GraphicsDeviceManager(this);
@@ -55,23 +51,8 @@ namespace cevEngine2D
             Globals.mouse = new CevMouseControl();
 
             //load spawn region map
-            ParseTiledJSON createSpawnMap = new("../../../data/spawn.tmj");
+            InitalizeMap createSpawnMap = new("../../../data/spawnWTrees.tmj");
             spawnMap = createSpawnMap.getMapObject();
-
-
-            // load map base layer
-            baseLayer = new(
-                "../../../data/tutorialmap..csv",
-                Content.Load<Texture2D>("ground_tiles"),
-                21
-                );
-
-            //load temp collision layer
-            collisionLayer = new(
-                "../../../data/tutorialmap._stone.csv",
-                Content.Load<Texture2D>("ground_Tiles"),
-                21
-                );
 
             world = new World();
 
@@ -101,10 +82,10 @@ namespace cevEngine2D
             //    Debug.WriteLine("reset timer: " + timer.Timer);
             //    timer.ResetToZero();
             //}
-            HandleCollisions(collisionLayer, playerVelocity, world.player); // method directly below for handling collision events
-                                                                                              // player.Update(playerVelocity); //Update player according to class logic
+            //HandleCollisions(collisionLayer, playerVelocity, world.player); // method directly below for handling collision events
+                                                                            // player.Update(playerVelocity); //Update player according to class logic
             world.Update(playerVelocity);
-            GameGlobals.camera.Follow(world.player.MapPosition, new Vector2(_graphics.PreferredBackBufferWidth, _graphics.PreferredBackBufferHeight)); //update camera offset with player movement
+            GameGlobals.camera.Follow(world.player.MapPosition); //update camera offset with player movement
 
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
@@ -172,7 +153,7 @@ namespace cevEngine2D
             foreach (var layer in spawnMap.Layers) {
                 if (layer.Type == "tilelayer") {
                     Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
-                    Tileset tileset = spawnMap.Tilesets.FirstOrDefault(set => set.Source == layer.SpriteSheet);
+                    Tileset tileset = spawnMap.Tilesets.FirstOrDefault(set => set.Name == layer.SpriteSheet);
 
                     foreach (Vector2 key in layer.MapMatrix.Keys) {
                         Rectangle dRect = new Rectangle(
@@ -183,32 +164,13 @@ namespace cevEngine2D
                             );
                         Rectangle sRect = tileset.TilesetAtlas[layer.MapMatrix[key]];
                         Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
-                    } 
+                    }
                 }
             }
 
-            //baseLayer.Draw(GameGlobals.camera.Position);
-            //collisionLayer.Draw(GameGlobals.camera.Position);
-
             world.Draw();
 
-            ////Debug method for collision tile hitbox
-            //foreach (var item in collisionLayer.tileMap) {
-            //    Vector2 position = item.Key;
-            //    Rectangle mapLocation = new(
-            //            (int)position.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
-            //            (int)position.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
-            //            GameGlobals.tileSize,
-            //            GameGlobals.tileSize
-            //    );
-            //    DrawRectHollow(Globals.spriteBatch, mapLocation, 4);
-            //}
-
-            ////Debug method for player hitbox. TODO: add method for defining player hitbox in Player class
             //DrawRectHollow(Globals.spriteBatch, world.player.DRect, 4);
-
-
-
             Globals.spriteBatch.End();
             base.Draw(gameTime);
         }
@@ -256,5 +218,6 @@ namespace cevEngine2D
                 Color.White
             );
         }
+
     }
 }

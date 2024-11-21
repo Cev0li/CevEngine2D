@@ -7537,11 +7537,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\cevEngine2D.csproj",
+      "projectUniqueName": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.csproj",
       "projectName": "cevEngine2D",
-      "projectPath": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\cevEngine2D.csproj",
+      "projectPath": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.csproj",
       "packagesPath": "C:\\Users\\markc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\markc\\source\\repos\\monogameTutorial\\obj\\",
+      "outputPath": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\markc\\AppData\\Roaming\\NuGet\\NuGet.Config",

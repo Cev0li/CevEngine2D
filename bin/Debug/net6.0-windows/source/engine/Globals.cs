@@ -3,7 +3,6 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine.input;
-using SharpDX.Direct3D11;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

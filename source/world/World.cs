@@ -18,8 +18,7 @@ using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 
-namespace cevEngine2D.source.world
-{
+namespace cevEngine2D.source.world {
     internal class World {
         public Player player; //TODO;handle collision logic so this is private
         private List<Projectile> projectiles = new();
@@ -70,7 +69,7 @@ namespace cevEngine2D.source.world
                 }
             }
         }
-    
+
         public virtual void AddMob(object mob) {
             mobs.Add((Mob)mob);
         }
@@ -80,20 +79,20 @@ namespace cevEngine2D.source.world
         }
 
         public void Draw() {
-            player.Draw();
+            List<BasicUnit> mapSprites = new();
+            List<BasicUnit> allSprites = new();
 
-            for (int i = 0; i < projectiles.Count; i++) {
-                projectiles[i].Draw();
+            allSprites.AddRange(mapSprites);
+            allSprites.AddRange(projectiles);
+            allSprites.AddRange(mobs);
+            allSprites.Add(player);
+            allSprites.AddRange(spawnPoints);
+            allSprites.Sort((s1, s2) => s2.POS.Y.CompareTo(s1.POS.Y));
+
+            for (int i = 0; i < allSprites.Count; i++) {
+                allSprites[i].Draw();
             }
 
-            for (int i = 0; i < spawnPoints.Count; i++) {
-                spawnPoints[i].Draw(GameGlobals.camera.Position);
-            }
-
-            for (int i = 0; i < mobs.Count; i++) {
-                mobs[i].Draw();
-            }
         }
-
     }
 }
