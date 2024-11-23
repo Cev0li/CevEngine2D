@@ -30,6 +30,14 @@ namespace cevEngine2D.source.engine.tilemap {
         public Tileset[] Tilesets { get; set; }
         public Dictionary<string, Texture2D> SpriteSheetLookup = new();
 
+        public void Load() {
+            setLayerSpriteSheets(); //CAREFUL: need to call this before creating sprite lookup table
+            createSpriteSheetLookupTable();
+            setLayerMapMatrix();
+            setTilesetAtlas();
+            setObjectProperties();
+        }
+
         //Cannot be called before setLayerSpriteSheet
         public void createSpriteSheetLookupTable() {
             for (int i = 0; i < Tilesets.Length; i++) {
@@ -42,8 +50,6 @@ namespace cevEngine2D.source.engine.tilemap {
                 if (layer.Type == "tilelayer") {
                     Dictionary<Vector2, int> result = new();
                     Tileset layerSet = Tilesets.FirstOrDefault(t => t.Name == layer.SpriteSheet);
-                    //int spriteSheetWidth = layerSet.Width;
-                    //int spriteSheetHeight = layerSet.Height;
                     int firstGID = layerSet.firstGID;
                     int x = 0;
                     int y = 0;
@@ -65,15 +71,10 @@ namespace cevEngine2D.source.engine.tilemap {
         }
 
         public void setLayerSpriteSheets() {
-            //string pattern = @"([^/\\]+)\.tsx";
             int[] firstgids;
             Dictionary<int, string> tilesetData = new(); //holds firstGID of each tileset in TileMap
             //Set lookup table for firstGID/name of tileset
             foreach (var set in Tilesets) {
-                //string text = set.Source;
-                //Match match = Regex.Match(text, pattern);
-                //string setName = match.Groups[1].Value;
-                //set.Source = setName; //clean file path from string in Tilesets array
                 tilesetData.Add(set.firstGID, set.Name);
             }
 
@@ -94,29 +95,42 @@ namespace cevEngine2D.source.engine.tilemap {
                 }
             }
         }
-
-        public void setObjectSourceRectangles() {
+        //DEPENDENCY: If object has an source rectangle PropName=SourceRect
+        public void setObjectProperties() {
             foreach (var layer in Layers) {
-                if(layer.Type == "objectgroup") {
-                    string objectLayerName = layer.Name;
-                    string[] rectDimsToParse = layer.Objects[0].ObjectData[0].Value.Split(',');
-                    int[] rectDims = new int[rectDimsToParse.Length];
-
-                    for (int i = 0; i < rectDims.Length; i++) {
-                        rectDims[i] = int.Parse(rectDimsToParse[i]);
+                if (layer.Type == "objectgroup") {
+                    //Handle object Properties
+                    for (int i = 0; i < layer.Objects.Length; i++) {
+                        LayerProperty[] props = layer.Objects[i].ObjectData;
+                        //Initalize source Rectangle by parsing the object property SourceRect string containing rectangle args
+                        LayerProperty sourceRectProp = props.FirstOrDefault(p => p.Name == "SourceRect");
+                        if (sourceRectProp != null) {
+                            int[] rectangleIntegers = sourceRectProp.Value.Split(',')
+                                .Select(s => {
+                                    if (int.TryParse(s, out int rectProp)) {
+                                        //Debug.WriteLine(rectProp);
+                                        return rectProp;
+                                    } else {
+                                        return -1;
+                                    }
+                                })
+                                .ToArray();
+                            layer.Objects[i].SourceRect = new Rectangle(
+                                rectangleIntegers[0],
+                                rectangleIntegers[1],
+                                rectangleIntegers[2],
+                                rectangleIntegers[3]
+                                );
+                        }
                     }
 
-                    layer.Objects[0].ObjectData[0].SRect = new Rectangle(
-                        rectDims[0],
-                        rectDims[1],
-                        rectDims[2],
-                        rectDims[3]);
-
-                    //Remove tiled display version of obeject map. This is if you overlaid a map layer representing objects with Tiled objects. 
-                    //Instead of loosing the visual in Tiled, The tile layer for the corresponding object layer is removed from TileMap object.
-                    //Object layer can now be parsed out of tile layers. For example, object layer can now be used for Y sorting.
+                    //Remove tile layer with same name as object layer. This allows for multiple tiled objects to be redenered/handles as one object.
+                    //This is effectively removing a visual layer in tiled, and giving the engine ability to handle multiple tiled elements as a single entity.
+                    //Setting the object layer sprite sheet with the sheet from tile layer.
+                    string objectLayerName = layer.Name;
                     Layer tileLayer = Layers.FirstOrDefault<Layer>(l => l.Name == objectLayerName && l.Type == "tilelayer");
                     if (tileLayer != null) {
+                        layer.SpriteSheet = tileLayer.SpriteSheet;
                         int removalIndex = Array.IndexOf(Layers, tileLayer);
                         if (removalIndex >= 0) {
                             Layer[] newLayers = new Layer[Layers.Length - 1];
@@ -189,6 +203,9 @@ namespace cevEngine2D.source.engine.tilemap {
         [JsonPropertyName("data")]
         public int[] Data { get; set; }
         public string SpriteSheet { get; set; }
+
+        [JsonPropertyName("properties")]
+        public LayerProperty[] LayerProps { get; set; }
         public Dictionary<Vector2, int> MapMatrix { get; set; }
     }
 
@@ -197,20 +214,20 @@ namespace cevEngine2D.source.engine.tilemap {
         public string Name { get; set; }
         [JsonPropertyName("height")]
         public float Height { get; set; }
-
-        [JsonPropertyName("properties")]
-        public Properties[] ObjectData { get; set; }
         [JsonPropertyName("width")]
         public float Width { get; set; }
         [JsonPropertyName("x")]
         public float X { get; set; }
         [JsonPropertyName("y")]
         public float Y { get; set; }
+        public Rectangle SourceRect { get; set; }
+        [JsonPropertyName("properties")]
+        public LayerProperty[] ObjectData { get; set; }
         [JsonPropertyName("visible")]
         public bool Visible { get; set; }
     }
 
-    public class Properties {
+    public class LayerProperty {
         //stores source rectangle for object layer tilesets. Allows draw calls to use multiple tiles as a singular Sprite.
         [JsonPropertyName("name")]
         public string Name { get; set; }

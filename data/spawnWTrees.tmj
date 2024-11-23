@@ -81,7 +81,7 @@
                 {
                  "height":32,
                  "id":10,
-                 "name":"",
+                 "name":"Tree",
                  "properties":[
                         {
                          "name":"SourceRect",
@@ -92,13 +92,13 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":424.25,
-                 "y":40.25
+                 "x":424,
+                 "y":40
                 }, 
                 {
                  "height":32,
                  "id":11,
-                 "name":"",
+                 "name":"Tree",
                  "properties":[
                         {
                          "name":"SourceRect",
@@ -109,25 +109,13 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":456.25,
-                 "y":39.875
-                }, 
-                {
-                 "gid":1671,
-                 "height":8,
-                 "id":12,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":8,
-                 "x":460.75,
-                 "y":64.125
+                 "x":456,
+                 "y":40
                 }, 
                 {
                  "height":32,
                  "id":13,
-                 "name":"",
+                 "name":"Tree",
                  "properties":[
                         {
                          "name":"SourceRect",
@@ -139,12 +127,12 @@
                  "visible":true,
                  "width":24,
                  "x":488,
-                 "y":39.875
+                 "y":40
                 }, 
                 {
                  "height":32,
                  "id":14,
-                 "name":"",
+                 "name":"Tree",
                  "properties":[
                         {
                          "name":"SourceRect",
@@ -155,8 +143,8 @@
                  "type":"",
                  "visible":true,
                  "width":24,
-                 "x":519.958,
-                 "y":39.7917
+                 "x":520,
+                 "y":40
                 }],
          "opacity":1,
          "properties":[
@@ -164,6 +152,11 @@
                  "name":"SourceRect",
                  "type":"string",
                  "value":"152,0,24,32"
+                }, 
+                {
+                 "name":"SpriteSheet",
+                 "type":"string",
+                 "value":"FPObj"
                 }],
          "type":"objectgroup",
          "visible":true,

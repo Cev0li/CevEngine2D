@@ -14,11 +14,11 @@ namespace cevEngine2D.source.engine
             _position = position;
         }
 
-        public void Follow(Vector2 playerShift)
+        public void Follow(Vector2 offset)
         {
             _position = new Vector2(
-                -playerShift.X + Globals.viewport.Width / 2,
-                -playerShift.Y + Globals.viewport.Height / 2
+                -offset.X + Globals.viewport.Width / 2,
+                -offset.Y + Globals.viewport.Height / 2
             );
         }
     }

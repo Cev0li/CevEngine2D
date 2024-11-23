@@ -30,14 +30,14 @@ namespace cevEngine2D.source.world {
             player = new(
                 "archer",
                 new Vector2(
-                    Globals.viewport.Width / 2 - 50 / 2,
-                    Globals.viewport.Height / 2 - 50 / 2),
+                    Globals.viewport.Width / 2,
+                    Globals.viewport.Height / 2),
                 new Vector2(100, 100),
                 new Rectangle(0, 0, 72, 72),
-                new Vector2(200, 200)
+                new Vector2(50, 50)
             );
 
-            spawnPoints.Add(new SpawnPoint(new Vector2(680, 200)));
+            spawnPoints.Add(new SpawnPoint(new Vector2(400, 240)));
 
             GameGlobals.PassProjectile = AddProjectile; //Add to projectiles list. Manage all projectiles in game.
             GameGlobals.PassMob = AddMob; //Add to mob list. Manage all mobs in game.
@@ -84,13 +84,21 @@ namespace cevEngine2D.source.world {
 
             allSprites.AddRange(mapSprites);
             allSprites.AddRange(projectiles);
-            allSprites.AddRange(mobs);
+            //allSprites.AddRange(mobs);
             allSprites.Add(player);
             allSprites.AddRange(spawnPoints);
-            allSprites.Sort((s1, s2) => s2.POS.Y.CompareTo(s1.POS.Y));
+            allSprites.Sort((s1, s2) => s1.POS.Y.CompareTo(s2.POS.Y));
 
             for (int i = 0; i < allSprites.Count; i++) {
                 allSprites[i].Draw();
+                if (allSprites[i].GetType() == typeof(SpawnPoint)) {
+
+                    //Debug.WriteLine(player.MapPosition.Y > allSprites[i].POS.Y);
+                    //Debug.WriteLine("SpawnPoint" + allSprites[i].DRect.Y + " " + +allSprites[i].DRect.X + " " + i);
+                }
+                if (allSprites[i].GetType() == typeof(Player)) {
+                    //Debug.WriteLine("Player" + allSprites[i].DRect.Y + " " + i);
+                }
             }
 
         }

@@ -38,7 +38,8 @@ namespace cevEngine2D {
         protected override void Initialize() {
             Globals.viewport = _graphics.GraphicsDevice.Viewport;
             GameGlobals.tileSize = 32;
-            GameGlobals.camera = new FollowCamera(Vector2.Zero); //load camera object
+            Vector2 initPosition = new Vector2(0, 0);
+            GameGlobals.camera = new FollowCamera(initPosition); //load camera object
 
             base.Initialize();
         }
@@ -53,6 +54,7 @@ namespace cevEngine2D {
             //load spawn region map
             InitalizeMap createSpawnMap = new("../../../data/spawnWTrees.tmj");
             spawnMap = createSpawnMap.getMapObject();
+            spawnMap.Load();
 
             world = new World();
 
@@ -70,20 +72,11 @@ namespace cevEngine2D {
             Globals.gameTime = gameTime;
 
             float[] playerVelocity = { 2f, 2f, 2f, 2f };
-            //baseline player movement resets every update. Will change based on game mechanics. Best way currently is to refresh state every frame.
-
             //if (count % 30 == 0) {
             //    Debug.WriteLine(count);
             //}
 
-            // simple timer logic
-            //timer.UpdateTimer();
-            //if(timer.Test()) {
-            //    Debug.WriteLine("reset timer: " + timer.Timer);
-            //    timer.ResetToZero();
-            //}
             //HandleCollisions(collisionLayer, playerVelocity, world.player); // method directly below for handling collision events
-                                                                            // player.Update(playerVelocity); //Update player according to class logic
             world.Update(playerVelocity);
             GameGlobals.camera.Follow(world.player.MapPosition); //update camera offset with player movement
 
@@ -151,9 +144,9 @@ namespace cevEngine2D {
             Globals.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
 
             foreach (var layer in spawnMap.Layers) {
+                Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
                 if (layer.Type == "tilelayer") {
-                    Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
-                    Tileset tileset = spawnMap.Tilesets.FirstOrDefault(set => set.Name == layer.SpriteSheet);
+                    Tileset tilesetData = spawnMap.Tilesets.FirstOrDefault(set => set.Name == layer.SpriteSheet);
 
                     foreach (Vector2 key in layer.MapMatrix.Keys) {
                         Rectangle dRect = new Rectangle(
@@ -162,9 +155,22 @@ namespace cevEngine2D {
                             GameGlobals.tileSize,
                             GameGlobals.tileSize
                             );
-                        Rectangle sRect = tileset.TilesetAtlas[layer.MapMatrix[key]];
+                        Rectangle sRect = tilesetData.TilesetAtlas[layer.MapMatrix[key]];
                         Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
                     }
+                }
+                if (layer.Type == "objectgroup") {
+                    foreach (var obj in layer.Objects) {
+                        Rectangle dRect = new Rectangle(
+                                (((int)Math.Round(obj.X) / spawnMap.TileWidth) * GameGlobals.tileSize) + (int)GameGlobals.camera.Position.X,
+                                (((int)Math.Round(obj.Y) / spawnMap.TileHeight) * GameGlobals.tileSize) + (int)GameGlobals.camera.Position.Y,
+                                (int)obj.Width / spawnMap.TileWidth * GameGlobals.tileSize,
+                                (int)obj.Height / spawnMap.TileWidth * GameGlobals.tileSize
+                            );
+                        Rectangle sRect = obj.SourceRect;
+                        Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
+                    }
+
                 }
             }
 

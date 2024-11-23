@@ -13,21 +13,12 @@ using System.Threading.Tasks;
 
 namespace cevEngine2D.source.engine.tilemap.utils
 {
-    //TILED JSON file requires addition of height and width in the tileset objects
     internal class InitalizeMap {
         private TileMap map;
 
         public InitalizeMap(string filepath) {
-            //string filePath = "../../../JSON/spawn.tmj";
             string JSONString = File.ReadAllText(filepath);
-
             map = JsonSerializer.Deserialize<TileMap>(JSONString);
-
-            map.setLayerSpriteSheets(); //CAREFUL: need to call this before creating sprite lookup table
-            map.createSpriteSheetLookupTable();
-            map.setLayerMapMatrix();
-            map.setTilesetAtlas();
-            map.setObjectSourceRectangles();
         }
 
         public TileMap getMapObject() {

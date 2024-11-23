@@ -8,4 +8,6 @@ Dash
 New Map
 Animate maps
 
+Need to fix Y sort camera to compare Player map position with sprite dRects
+
 TileMap line 43 && Engine Line 159 are the same and something needs to be done about it. Looking up tilesets.
