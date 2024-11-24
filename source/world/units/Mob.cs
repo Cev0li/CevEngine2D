@@ -27,7 +27,7 @@ namespace cevEngine2D.source.world.units
         }
 
         public virtual void AI(Player player) {
-            _pos += Globals.RadialMovement(player.MapPosition, _pos, _speed);
+            _pos += Globals.RadialMovement(player.POS, _pos, _speed);
         }
 
         public override void Draw() {

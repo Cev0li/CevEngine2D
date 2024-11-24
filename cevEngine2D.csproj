@@ -47,13 +47,10 @@
     <Compile Update="source\engine\Globals.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="source\engine\tilemap\TileLayer.cs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Compile>
     <Compile Update="source\world\units\Player.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="source\world\Projectile.cs">
+    <Compile Update="source\world\projectiles\Projectile.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Update="source\world\projectiles\Fireball.cs">

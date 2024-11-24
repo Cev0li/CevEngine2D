@@ -1,9 +1,10 @@
-﻿using cevEngine2D.source.world.units;
+﻿using cevEngine2D.source.world;
+using cevEngine2D.source.world.units;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using SharpDX.Direct2D1;
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -28,17 +29,34 @@ namespace cevEngine2D.source.engine.tilemap {
         public Layer[] Layers { get; set; }
         [JsonPropertyName("tilesets")]
         public Tileset[] Tilesets { get; set; }
+        public List<BasicUnit> MapObjects = new();
         public Dictionary<string, Texture2D> SpriteSheetLookup = new();
 
         public void Load() {
-            setLayerSpriteSheets(); //CAREFUL: need to call this before creating sprite lookup table
+            setLayerSpriteSheets();
             createSpriteSheetLookupTable();
             setLayerMapMatrix();
             setTilesetAtlas();
             setObjectProperties();
+            createMapUnits();
         }
 
-        //Cannot be called before setLayerSpriteSheet
+        public void createMapUnits() {
+            foreach (var layer in Layers) {
+                if (layer.Type == "objectgroup") {
+                    foreach (var obj in layer.Objects) {
+                        BasicUnit mapObject = new BasicUnit(
+                            layer.SpriteSheet,
+                            new Vector2((((int)Math.Round(obj.X) / this.TileWidth) * GameGlobals.tileSize), (((int)Math.Round(obj.Y) / this.TileHeight) * GameGlobals.tileSize)),
+                            new Vector2((int)obj.Width / this.TileWidth * GameGlobals.tileSize, (int)obj.Height / this.TileHeight * GameGlobals.tileSize),
+                            obj.SourceRect
+                        );
+                        MapObjects.Add(mapObject);
+                    }
+                }
+            }
+        }
+
         public void createSpriteSheetLookupTable() {
             for (int i = 0; i < Tilesets.Length; i++) {
                 SpriteSheetLookup.Add(Tilesets[i].Name, Globals.content.Load<Texture2D>(Tilesets[i].Name));

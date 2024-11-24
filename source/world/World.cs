@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.animate;
 using cevEngine2D.source.engine.input;
-using cevEngine2D.source.world;
 using cevEngine2D.source.world.projectiles;
 using cevEngine2D.source.world.units;
 using System;
@@ -14,27 +13,25 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
-using static System.Net.Mime.MediaTypeNames;
+//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 
-namespace cevEngine2D.source.world {
+namespace cevEngine2D.source.world
+{
     internal class World {
         public Player player; //TODO;handle collision logic so this is private
-        private List<Projectile> projectiles = new();
+        public List<Projectile> projectiles = new();
         private List<Mob> mobs = new();
-        private List<SpawnPoint> spawnPoints = new();
+        public List<SpawnPoint> spawnPoints = new();
 
         public World() {
             //currently hardcoded scaling etc...
             player = new(
                 "archer",
-                new Vector2(
-                    Globals.viewport.Width / 2,
-                    Globals.viewport.Height / 2),
+                new Vector2(5, 50),
                 new Vector2(100, 100),
-                new Rectangle(0, 0, 72, 72),
-                new Vector2(50, 50)
+                new Rectangle(0, 0, 72, 72)
             );
 
             spawnPoints.Add(new SpawnPoint(new Vector2(400, 240)));
@@ -47,8 +44,8 @@ namespace cevEngine2D.source.world {
             player.Update(playerVelocity);
 
             for (int i = 0; i < projectiles.Count; i++) {
-                //projectiles[i].Update(mobs.ToList<Unit>());
-                projectiles[i].Update(mobs.Cast<Unit>().ToList());
+                projectiles[i].Update(mobs.ToList<Unit>());
+                //projectiles[i].Update(mobs.Cast<Unit>().ToList());
 
                 if (projectiles[i].Done) {
                     projectiles.RemoveAt(i);
@@ -78,27 +75,19 @@ namespace cevEngine2D.source.world {
             projectiles.Add((Projectile)projectile);
         }
 
-        public void Draw() {
-            List<BasicUnit> mapSprites = new();
+        public void Draw(List<BasicUnit> mapSprites) {
             List<BasicUnit> allSprites = new();
-
             allSprites.AddRange(mapSprites);
             allSprites.AddRange(projectiles);
             //allSprites.AddRange(mobs);
             allSprites.Add(player);
             allSprites.AddRange(spawnPoints);
-            allSprites.Sort((s1, s2) => s1.POS.Y.CompareTo(s2.POS.Y));
+            allSprites.Sort((s1, s2) => s1.Hitbox.Bottom.CompareTo(s2.Hitbox.Bottom));
 
             for (int i = 0; i < allSprites.Count; i++) {
                 allSprites[i].Draw();
-                if (allSprites[i].GetType() == typeof(SpawnPoint)) {
-
-                    //Debug.WriteLine(player.MapPosition.Y > allSprites[i].POS.Y);
-                    //Debug.WriteLine("SpawnPoint" + allSprites[i].DRect.Y + " " + +allSprites[i].DRect.X + " " + i);
-                }
-                if (allSprites[i].GetType() == typeof(Player)) {
-                    //Debug.WriteLine("Player" + allSprites[i].DRect.Y + " " + i);
-                }
+                //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].Hitbox, 1);
+                //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].DRect, 1);
             }
 
         }

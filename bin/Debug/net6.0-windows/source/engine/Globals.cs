@@ -5,7 +5,6 @@ using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine.input;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,6 +26,8 @@ namespace cevEngine2D {
 
         public static GameTime gameTime;
 
+        public static Texture2D rectangleTexture; //debug variable for rectHollow method
+
         public static float GetDistance(Vector2 pos, Vector2 target) {
             return (float)Math.Sqrt(Math.Pow(pos.X - target.X, 2) + Math.Pow(pos.Y - target.Y, 2));
         }
@@ -39,6 +40,50 @@ namespace cevEngine2D {
             } else {
                 return (focus - pos) * speed / dist;
             }
+        }
+
+        //Debug method for outlining rectangles
+        public static void DrawRectHollow(Rectangle rect, int thickness) {
+            Globals.spriteBatch.Draw(
+                rectangleTexture,
+                new Rectangle(
+                    rect.X,
+                    rect.Y,
+                    rect.Width,
+                    thickness
+                ),
+                Color.White
+            );
+            Globals.spriteBatch.Draw(
+                rectangleTexture,
+                new Rectangle(
+                    rect.X,
+                    rect.Bottom - thickness,
+                    rect.Width,
+                    thickness
+                ),
+                Color.White
+            );
+            Globals.spriteBatch.Draw(
+                rectangleTexture,
+                new Rectangle(
+                    rect.X,
+                    rect.Y,
+                    thickness,
+                    rect.Height
+                ),
+                Color.White
+            );
+            Globals.spriteBatch.Draw(
+                rectangleTexture,
+                new Rectangle(
+                    rect.Right - thickness,
+                    rect.Y,
+                    thickness,
+                    rect.Height
+                ),
+                Color.White
+            );
         }
 
         //public static float RotateTowards(Vector2 Pos, Vector2 focus) {

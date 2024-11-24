@@ -17,16 +17,21 @@ using cevEngine2D.source.engine.animate;
 namespace cevEngine2D.source.world.units
 {
     internal class Player : Unit {
-        private Vector2 _mapPosition; //offset of map in relationship to centered player. Controls camera movement to simulate player movement/ player start on map
         private AnimationManager animations;
         private SpriteEffects flipEffect;
 
-        public Vector2 MapPosition { get { return _mapPosition; } }
+        //public Vector2 MapPosition { get { return _mapPosition; } }
 
-        public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect, Vector2 position) : base(texture, pos, size, sRect) {
-            _mapPosition = position; //Camera offset variable. This locates player at specific point on map
+        public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect/*, Vector2 position*/) : base(texture, pos, size, sRect) {
             flipEffect = SpriteEffects.None;
-            
+
+            _dRect = new Rectangle(
+                Globals.viewport.Width / 2 - (int)size.X / 2,
+                Globals.viewport.Height / 2 - (int)size.Y / 2,
+                (int)size.X,
+                (int)size.Y
+                );
+
             animations = new AnimationManager(this);
             animations.AddAnimation("W", 5, 72, false, false, new Vector2(0, 0));
             animations.AddAnimation("A", 5, 72, false, false, new Vector2(2, 0));
@@ -47,66 +52,69 @@ namespace cevEngine2D.source.world.units
 
             if (diagnolMovement) {
                 if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("D")) {
-                    _mapPosition += new Vector2(velocity[1], -velocity[3]);
+                    _pos += new Vector2(velocity[1], -velocity[3]);
                     animations.Update("WD");
                     flipEffect = SpriteEffects.None;
                 }
 
                 if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("A")) {
-                    _mapPosition += new Vector2 (-velocity[1], -velocity[2]);
+                    _pos += new Vector2 (-velocity[1], -velocity[2]);
                     animations.Update("WA");
                     flipEffect = SpriteEffects.FlipHorizontally;
                 }
 
                 if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("D")) {
-                    _mapPosition += new Vector2(velocity[0], velocity[3]);
+                    _pos += new Vector2(velocity[0], velocity[3]);
                     animations.Update("SD");
                     flipEffect = SpriteEffects.None;
                 }
 
                 if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("A")) {
-                    _mapPosition += new Vector2(-velocity[0], velocity[1]);
+                    _pos += new Vector2(-velocity[0], velocity[1]);
                     animations.Update("SA");
                     flipEffect = SpriteEffects.FlipHorizontally;
                 }
             } else {
                 if (Globals.keyboard.GetPress("A")) {
-                    _mapPosition.X -= velocity[1];
+                    _pos.X -= velocity[1];
                     animations.Update("A");
                     flipEffect = SpriteEffects.FlipHorizontally;
                 }
                 if (Globals.keyboard.GetPress("D")) {
-                    _mapPosition.X += velocity[3];
+                    _pos.X += velocity[3];
                     animations.Update("D");
                     flipEffect = SpriteEffects.None;
                 }
                 if (Globals.keyboard.GetPress("W")) {
-                    _mapPosition.Y -= velocity[2];
+                    _pos.Y -= velocity[2];
                     animations.Update("W");
                     flipEffect = SpriteEffects.None;
                 }
                 if (Globals.keyboard.GetPress("S")) {
-                    _mapPosition.Y += velocity[0];
+                    _pos.Y += velocity[0];
                     animations.Update("S");
                     flipEffect = SpriteEffects.None;
                 }
             }
-            if (Globals.mouse.LeftClick()) {
+            if (/*Globals.keyboard.GetPress("E")*/Globals.mouse.LeftClick()) {
                 GameGlobals.PassProjectile(new Fireball(
                     "FIREBALL",
-                    new Vector2(_pos.X, _pos.Y),
+                    new Vector2(_hitbox.X + Size.X / 2, _hitbox.Y + _hitbox.Height),
                     new Vector2(25, 25),
                     new Rectangle(0, 0, 16, 16), 
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
-                    10000)
+                    1000)
                 );
+                Debug.WriteLine("Cluck ");
             }
+
+            updateHitBox(Vector2.Zero);
         }
 
         public override void Draw() {
             Globals.spriteBatch.Draw(
                 SpriteTexture,
-                DRect,
+                _dRect,
                 _sRect,
                 Color.White,
                 0f,
