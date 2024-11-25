@@ -1,8 +1,9 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/markc/source/repos/monogameTutorial/Content/archer.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/archer.xnb","TextureProcessor","Texture2DContent",23948,2073685,0.1688479
-"C:/Users/markc/source/repos/monogameTutorial/Content/circle.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/circle.xnb","TextureProcessor","Texture2DContent",4653,65621,0.1213255
-"C:/Users/markc/source/repos/monogameTutorial/Content/FIREBALL.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/FIREBALL.xnb","TextureProcessor","Texture2DContent",196,1109,0.1122624
-"C:/Users/markc/source/repos/monogameTutorial/Content/FPObj.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/FPObj.xnb","TextureProcessor","Texture2DContent",3995,56405,0.1118613
-"C:/Users/markc/source/repos/monogameTutorial/Content/FPTiles.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/FPTiles.xnb","TextureProcessor","Texture2DContent",21911,406357,0.0109288
-"C:/Users/markc/source/repos/monogameTutorial/Content/ground_tiles.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/ground_tiles.xnb","TextureProcessor","Texture2DContent",227339,1884373,0.130877
-"C:/Users/markc/source/repos/monogameTutorial/Content/WildOrcIdle.png","C:/Users/markc/source/repos/monogameTutorial/Content/bin/Windows/WildOrcIdle.xnb","TextureProcessor","Texture2DContent",1937,262229,0.0060428
+"C:/Users/markc/source/repos/CevEngine2D/Content/archer.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/archer.xnb","TextureProcessor","Texture2DContent",23948,2073685,0.1643213
+"C:/Users/markc/source/repos/CevEngine2D/Content/circle.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/circle.xnb","TextureProcessor","Texture2DContent",4653,65621,0.0023631
+"C:/Users/markc/source/repos/CevEngine2D/Content/CollisionTile.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/CollisionTile.xnb","TextureProcessor","Texture2DContent",115,341,0.0012779
+"C:/Users/markc/source/repos/CevEngine2D/Content/FIREBALL.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/FIREBALL.xnb","TextureProcessor","Texture2DContent",196,1109,0.0011191
+"C:/Users/markc/source/repos/CevEngine2D/Content/FPObj.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/FPObj.xnb","TextureProcessor","Texture2DContent",3995,56405,0.0016254
+"C:/Users/markc/source/repos/CevEngine2D/Content/FPTiles.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/FPTiles.xnb","TextureProcessor","Texture2DContent",21911,406357,0.010644
+"C:/Users/markc/source/repos/CevEngine2D/Content/ground_tiles.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/ground_tiles.xnb","TextureProcessor","Texture2DContent",227339,1884373,0.0369006
+"C:/Users/markc/source/repos/CevEngine2D/Content/WildOrcIdle.png","C:/Users/markc/source/repos/CevEngine2D/Content/bin/Windows/WildOrcIdle.xnb","TextureProcessor","Texture2DContent",1937,262229,0.0059115

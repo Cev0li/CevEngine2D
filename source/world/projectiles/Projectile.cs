@@ -34,6 +34,12 @@ namespace cevEngine2D.source.world.projectiles {
 
         public virtual void Update(List<Unit> units) {
             _pos += _direction * _speed;
+            _dRect = new Rectangle(
+                (int)(_pos.X - _size.X / 2),
+                (int)(_pos.Y - _size.Y / 2),
+                (int)_size.X,
+                (int)_size.Y
+            );
             updateHitBox(Vector2.Zero);
 
             _timer.UpdateTimer();
@@ -44,7 +50,6 @@ namespace cevEngine2D.source.world.projectiles {
             if (hitSomething(units)) {
                 _done = true;
             }
-            base.Update(Vector2.Zero);
         }
 
         public virtual bool hitSomething(List<Unit> units) {

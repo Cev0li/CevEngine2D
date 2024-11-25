@@ -46,7 +46,7 @@ namespace cevEngine2D {
             Globals.mouse = new CevMouseControl();
 
             //load spawn region map
-            InitalizeMap createSpawnMap = new("../../../data/spawnWTrees.tmj");
+            InitalizeMap createSpawnMap = new("../../../data/spawnTEST.tmj");
             spawnMap = createSpawnMap.getMapObject();
             spawnMap.Load();
 
@@ -68,6 +68,7 @@ namespace cevEngine2D {
             float[] playerVelocity = { 2f, 2f, 2f, 2f };
 
             world.Update(playerVelocity);
+
             foreach (var obj in spawnMap.MapObjects) {
                 obj.Update();
             }

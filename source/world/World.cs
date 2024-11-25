@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.animate;
 using cevEngine2D.source.engine.input;
 using cevEngine2D.source.world.projectiles;
@@ -13,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using cevEngine2D.source.engine.sprites;
 //using static System.Net.Mime.MediaTypeNames;
 #endregion
 
@@ -21,7 +21,7 @@ namespace cevEngine2D.source.world
 {
     internal class World {
         public Player player; //TODO;handle collision logic so this is private
-        public List<Projectile> projectiles = new();
+        private List<Projectile> projectiles = new();
         private List<Mob> mobs = new();
         public List<SpawnPoint> spawnPoints = new();
 

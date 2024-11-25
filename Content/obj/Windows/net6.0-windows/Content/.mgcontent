@@ -6,6 +6,7 @@
   <SourceFiles>
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/archer.png</File>
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/circle.png</File>
+    <File>C:/Users/markc/source/repos/CevEngine2D/Content/CollisionTile.png</File>
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/FIREBALL.png</File>
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/FPObj.png</File>
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/FPTiles.png</File>
@@ -13,6 +14,7 @@
     <File>C:/Users/markc/source/repos/CevEngine2D/Content/WildOrcIdle.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

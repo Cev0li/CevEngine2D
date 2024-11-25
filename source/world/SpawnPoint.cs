@@ -14,9 +14,11 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using cevEngine2D.source.engine.sprites;
 #endregion
 
-namespace cevEngine2D.source.world.units {
+namespace cevEngine2D.source.world.units
+{
     internal class SpawnPoint : BasicUnit {
 
         protected bool _dead;

@@ -71,7 +71,6 @@ C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\Content\FPTiles
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\Content\ground_tiles.xnb
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\Content\rpgcritters2.xnb
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\Content\WildOrcIdle.xnb
-C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\source\engine\BasicUnit.cs
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\source\engine\FollowCamera.cs
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\source\engine\GameTimer.cs
 C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\source\engine\Globals.cs
@@ -115,3 +114,5 @@ C:\Users\markc\source\repos\CevEngine2D\obj\Debug\net6.0-windows\refint\cevEngin
 C:\Users\markc\source\repos\CevEngine2D\obj\Debug\net6.0-windows\cevEngine2D.pdb
 C:\Users\markc\source\repos\CevEngine2D\obj\Debug\net6.0-windows\cevEngine2D.genruntimeconfig.cache
 C:\Users\markc\source\repos\CevEngine2D\obj\Debug\net6.0-windows\ref\cevEngine2D.dll
+C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\Content\CollisionTile.xnb
+C:\Users\markc\source\repos\CevEngine2D\bin\Debug\net6.0-windows\source\engine\sprites\BasicUnit.cs

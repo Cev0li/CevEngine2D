@@ -2,7 +2,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.input;
 using cevEngine2D.source.world.projectiles;
 using SharpDX.MediaFoundation;
@@ -12,6 +11,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
+using cevEngine2D.source.engine.sprites;
 #endregion
 
 namespace cevEngine2D.source.world.units

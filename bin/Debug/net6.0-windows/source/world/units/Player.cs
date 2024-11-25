@@ -96,16 +96,15 @@ namespace cevEngine2D.source.world.units
                     flipEffect = SpriteEffects.None;
                 }
             }
-            if (/*Globals.keyboard.GetPress("E")*/Globals.mouse.LeftClick()) {
+            if (/*Globals.keyboard.GetPress("E")*/Globals.mouse.RightClickRelease()) {
                 GameGlobals.PassProjectile(new Fireball(
                     "FIREBALL",
                     new Vector2(_hitbox.X + Size.X / 2, _hitbox.Y + _hitbox.Height),
-                    new Vector2(25, 25),
+                    new Vector2(100, 100),
                     new Rectangle(0, 0, 16, 16), 
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
-                    1000)
+                    100000)
                 );
-                Debug.WriteLine("Cluck ");
             }
 
             updateHitBox(Vector2.Zero);

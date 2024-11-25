@@ -56,7 +56,7 @@
     <Compile Update="source\world\projectiles\Fireball.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Update="source\engine\BasicUnit.cs">
+    <Compile Update="source\engine\sprites\BasicUnit.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿using cevEngine2D.source.world;
+﻿using cevEngine2D.source.engine.sprites;
+using cevEngine2D.source.world;
 using cevEngine2D.source.world.units;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
@@ -15,7 +16,8 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 //May need to add tileSize data member to Tilesets. Using layer tile size for the current iteration. Used for tileset matrix
-namespace cevEngine2D.source.engine.tilemap {
+namespace cevEngine2D.source.engine.tilemap
+{
     internal class TileMap {
         [JsonPropertyName("height")]
         public int Height { get; set; }
@@ -45,7 +47,7 @@ namespace cevEngine2D.source.engine.tilemap {
             foreach (var layer in Layers) {
                 if (layer.Type == "objectgroup") {
                     foreach (var obj in layer.Objects) {
-                        BasicUnit mapObject = new BasicUnit(
+                        MapUnit mapObject = new MapUnit(
                             layer.SpriteSheet,
                             new Vector2((((int)Math.Round(obj.X) / this.TileWidth) * GameGlobals.tileSize), (((int)Math.Round(obj.Y) / this.TileHeight) * GameGlobals.tileSize)),
                             new Vector2((int)obj.Width / this.TileWidth * GameGlobals.tileSize, (int)obj.Height / this.TileHeight * GameGlobals.tileSize),
@@ -121,24 +123,28 @@ namespace cevEngine2D.source.engine.tilemap {
                     for (int i = 0; i < layer.Objects.Length; i++) {
                         LayerProperty[] props = layer.Objects[i].ObjectData;
                         //Initalize source Rectangle by parsing the object property SourceRect string containing rectangle args
-                        LayerProperty sourceRectProp = props.FirstOrDefault(p => p.Name == "SourceRect");
-                        if (sourceRectProp != null) {
-                            int[] rectangleIntegers = sourceRectProp.Value.Split(',')
-                                .Select(s => {
-                                    if (int.TryParse(s, out int rectProp)) {
-                                        //Debug.WriteLine(rectProp);
-                                        return rectProp;
-                                    } else {
-                                        return -1;
-                                    }
-                                })
-                                .ToArray();
-                            layer.Objects[i].SourceRect = new Rectangle(
-                                rectangleIntegers[0],
-                                rectangleIntegers[1],
-                                rectangleIntegers[2],
-                                rectangleIntegers[3]
-                                );
+                        if (props != null) {
+                            LayerProperty sourceRectProp = props.FirstOrDefault(p => p.Name == "SourceRect");
+                            if (sourceRectProp != null) {
+                                int[] rectangleIntegers = sourceRectProp.Value.Split(',')
+                                    .Select(s => {
+                                        if (int.TryParse(s, out int rectProp)) {
+                                            //Debug.WriteLine(rectProp);
+                                            return rectProp;
+                                        } else {
+                                            return -1;
+                                        }
+                                    })
+                                    .ToArray();
+                                layer.Objects[i].SourceRect = new Rectangle(
+                                    rectangleIntegers[0],
+                                    rectangleIntegers[1],
+                                    rectangleIntegers[2],
+                                    rectangleIntegers[3]
+                                    );
+                            }
+                        } else {
+                            Debug.WriteLine($"Object in {layer.Name} does not possess any custom properties in level editor");
                         }
                     }
 
@@ -217,7 +223,7 @@ namespace cevEngine2D.source.engine.tilemap {
         [JsonPropertyName("opacity")]
         public float opacity { get; set; }
         [JsonPropertyName("objects")]
-        public MapObject[] Objects { get; set; } //objectgroup or tilelayer
+        public MapObject[] Objects { get; set; }
         [JsonPropertyName("data")]
         public int[] Data { get; set; }
         public string SpriteSheet { get; set; }
