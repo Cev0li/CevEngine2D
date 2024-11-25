@@ -1,4 +1,5 @@
-﻿using cevEngine2D.source.engine.sprites;
+﻿#region
+using cevEngine2D.source.engine.sprites;
 using cevEngine2D.source.world;
 using cevEngine2D.source.world.units;
 using Microsoft.Xna.Framework;
@@ -15,7 +16,26 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-//May need to add tileSize data member to Tilesets. Using layer tile size for the current iteration. Used for tileset matrix
+#endregion
+/*
+ * Built for exporting JSON in Tiled map editor.
+ * SetLayerSpriteSheets - Parses the data in the Tileset array to set the tileset associated with that layer. 
+ *  the tileset can then be retrieved when drawing using the SpriteSheetLookup list. 
+ *  ***use one tileset per layer when building maps***
+ * CreateSpriteSheetLookupTable - Associate Texture2D spritesheet with a string of the same name. Used to set Texture2D for draw calls. 
+ * SetLayerMapMatrix - Parse Data field in layers array into a dictionary representing a matrix location mapped to a 
+ *  tile location on the spritesheet atlas.
+ * SetTilesetAtlas - Parse tileset data into Dictionary. Key represents the order of tiles counting along X axis. 
+ *  Value represents the source rectangle for cropping that same tile from spritesheet.
+ * SetObjectProperties - Current iteration sets source rectangle for Tiled object layer. Map objects are often multiple tiles large.
+ *  Handling them as one element is necessary for smooth game mechaincs. This method assumes in tiled you have a template rectangle placed
+ *  over the tile representations of your object layer. That template contains a custom property named SourceRect holding the source rectangle
+ *  to cut that object out of its SpriteSheet. The method then deletes the tile layer associated with that layer, and the game can use this
+ *  portion of the TileMap to handle map objects. the object layer in Tiled should be named the same as the object layer to avoid visual bugs. 
+ * CreateMapUnits - Takes the object layers objects and populates a list with MapUnits. The object layers become sprites capable of game mechanics.
+ *  This list should be passed into areas of the game that handle collisions, Y sorting, etc.. Editing the MapObject class will create more robust
+ *  map objects.
+ */
 namespace cevEngine2D.source.engine.tilemap
 {
     internal class TileMap {
@@ -115,7 +135,7 @@ namespace cevEngine2D.source.engine.tilemap
                 }
             }
         }
-        //DEPENDENCY: If object has an source rectangle PropName=SourceRect
+
         public void setObjectProperties() {
             foreach (var layer in Layers) {
                 if (layer.Type == "objectgroup") {
@@ -129,7 +149,6 @@ namespace cevEngine2D.source.engine.tilemap
                                 int[] rectangleIntegers = sourceRectProp.Value.Split(',')
                                     .Select(s => {
                                         if (int.TryParse(s, out int rectProp)) {
-                                            //Debug.WriteLine(rectProp);
                                             return rectProp;
                                         } else {
                                             return -1;

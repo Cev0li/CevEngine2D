@@ -10,7 +10,10 @@ using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 #endregion
-
+/*
+ * Load in map from JSON file
+ * Save map to TileMap object in game load area using getMapObject()
+ */
 namespace cevEngine2D.source.engine.tilemap.utils
 {
     internal class InitalizeMap {

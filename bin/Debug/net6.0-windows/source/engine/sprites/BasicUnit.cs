@@ -13,11 +13,15 @@ using System.Linq;
 using System.Reflection.Emit;
 using cevEngine2D.source.world.units;
 #endregion
-
-namespace cevEngine2D.source.engine.sprites
-{
-    internal class BasicUnit
-    {
+/*
+ * Foundation of any interactable object in game. Tile layers are drawn directly from TileMap class in Game class.
+ * Handles Destination, Source, and Hitbox rectangles.
+ * Hitbox is a rectangle drawn from the non transparent bounds of a sprite using the source rectangle, the spritesheet
+ * and mapped to game using the destination rectangle. They are updated along with destination rectangles. 
+ * Use hitbox for all game mechanics and destination rectangle for all movement.
+ */
+namespace cevEngine2D.source.engine.sprites {
+    internal class BasicUnit {
         internal Texture2D _texture;
         protected Vector2 _pos, _size;
         protected Rectangle _dRect, _sRect, _hitbox;
@@ -30,12 +34,10 @@ namespace cevEngine2D.source.engine.sprites
         public Rectangle Hitbox { get { return _hitbox; } set { _hitbox = value; } }
 
 
-        public BasicUnit(string texture, Vector2 pos, Vector2 size, Rectangle sRect)
-        {
+        public BasicUnit(string texture, Vector2 pos, Vector2 size, Rectangle sRect) {
             _texture = Globals.content.Load<Texture2D>(texture);
             _pos = pos;
             _size = size;
-
             _dRect = new Rectangle(
                 (int)(pos.X - size.X / 2),
                 (int)(pos.Y - size.Y / 2),
@@ -43,12 +45,10 @@ namespace cevEngine2D.source.engine.sprites
                 (int)size.Y
             );
             _sRect = sRect;
-
             _hitbox = GetNonTransparentBounds(SpriteTexture, SRect);
         }
 
-        public Rectangle GetNonTransparentBounds(Texture2D texture, Rectangle sourceRectangle)
-        {
+        public Rectangle GetNonTransparentBounds(Texture2D texture, Rectangle sourceRectangle) {
             Vector2 hitboxScale = _size / new Vector2(_sRect.Width, _sRect.Height);
             Color[] data = new Color[texture.Width * texture.Height];
             texture.GetData(data);
@@ -58,10 +58,8 @@ namespace cevEngine2D.source.engine.sprites
             int top = sourceRectangle.Bottom;
             int bottom = sourceRectangle.Top;
 
-            for (int y = sourceRectangle.Top; y < sourceRectangle.Bottom; y++)
-            {
-                for (int x = sourceRectangle.Left; x < sourceRectangle.Right; x++)
-                {
+            for (int y = sourceRectangle.Top; y < sourceRectangle.Bottom; y++) {
+                for (int x = sourceRectangle.Left; x < sourceRectangle.Right; x++) {
                     Color pixel = data[y * texture.Width + x];
                     if (pixel.A != 0) // If pixel is not transparent
                     {
@@ -82,29 +80,23 @@ namespace cevEngine2D.source.engine.sprites
 
 
 
-        public virtual void Update()
-        {
+        public virtual void Update() {
             _dRect = new Rectangle(
                 (int)(_pos.X - _size.X / 2),
                 (int)(_pos.Y - _size.Y / 2),
                 (int)_size.X,
                 (int)_size.Y
             );
-            updateHitBox(Vector2.Zero);
-        }
 
-        protected void updateHitBox(Vector2 offset)
-        {
             _hitbox = new Rectangle(
-                _dRect.X + _dRect.Width / 2 - _hitbox.Width / 2 + (int)offset.X,
-                _dRect.Y + _dRect.Height / 2 - _hitbox.Height / 2 + (int)offset.Y,
+                _dRect.X + _dRect.Width / 2 - _hitbox.Width / 2,
+                _dRect.Y + _dRect.Height / 2 - _hitbox.Height / 2,
                 _hitbox.Width,
                 _hitbox.Height
             );
         }
 
-        public virtual void Draw()
-        {
+        public virtual void Draw() {
             Globals.spriteBatch.Draw(
                 _texture,
                 _dRect = new Rectangle(
@@ -117,8 +109,7 @@ namespace cevEngine2D.source.engine.sprites
                 Color.White);
         }
 
-        public virtual void Draw(Vector2 offset)
-        {
+        public virtual void Draw(Vector2 offset) {
             Globals.spriteBatch.Draw(
                 _texture,
                 _dRect = new Rectangle(

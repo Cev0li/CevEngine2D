@@ -20,8 +20,7 @@ namespace cevEngine2D.source.world.units
     {
 
         protected bool _dead, _diagnolLeft, _diagnolRight;
-        protected float _speed/*, _hitDistance*/;
-        //Properties
+        protected float _speed;
         public bool Dead { get { return _dead; } set { _dead = value; } }
         public float Speed { get { return _speed; } }
 

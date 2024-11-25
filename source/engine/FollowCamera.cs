@@ -1,11 +1,14 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-
+/*
+ * Matrix shift camera.
+ * Currently handles only translation
+ * Passed to spriteBatch and updated in main game loop update.
+ */
 namespace cevEngine2D.source.engine
 {
     public class FollowCamera
     {
-
         public Vector2 Position { get; set; }
         public Matrix TransformMatrix { get; private set; }
 

@@ -25,13 +25,6 @@ namespace cevEngine2D.source.world.units
         public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
             flipEffect = SpriteEffects.None;
 
-            //_dRect = new Rectangle(
-            //    Globals.viewport.Width / 2 - (int)size.X / 2,
-            //    Globals.viewport.Height / 2 - (int)size.Y / 2,
-            //    (int)size.X,
-            //    (int)size.Y
-            //    );
-
             animations = new AnimationManager(this);
             animations.AddAnimation("W", 5, 72, false, false, new Vector2(0, 0));
             animations.AddAnimation("A", 5, 72, false, false, new Vector2(2, 0));
@@ -107,7 +100,6 @@ namespace cevEngine2D.source.world.units
                 );
             }
 
-            updateHitBox(Vector2.Zero);
             base.Update();
         }
 

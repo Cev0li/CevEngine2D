@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\tasks.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:tasks.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 188,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "cevEngine2D.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
               "RelativeDocumentMoniker": "cevEngine2D.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
               "RelativeToolTip": "cevEngine2D.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAJsAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAIwCUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T00:59:34.81Z",
               "IsPinned": true,
@@ -36,16 +44,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "World.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
               "RelativeDocumentMoniker": "source\\world\\World.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
               "RelativeToolTip": "source\\world\\World.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAwwFEAAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAFIAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T01:17:51.821Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Tasks.txt",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\Tasks.txt",
+              "RelativeDocumentMoniker": "Tasks.txt",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\Tasks.txt",
+              "RelativeToolTip": "Tasks.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-11-25T03:27:25.27Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TileMap.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\tilemap\\TileMap.cs",
+              "RelativeDocumentMoniker": "source\\engine\\tilemap\\TileMap.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\tilemap\\TileMap.cs",
+              "RelativeToolTip": "source\\engine\\tilemap\\TileMap.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T03:23:35.857Z",
               "EditorCaption": ""
             }
           ]

@@ -13,7 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using cevEngine2D.source.engine.sprites;
-//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 
@@ -69,7 +68,6 @@ namespace cevEngine2D.source.world
 
         public virtual void AddMob(object mob) {
             mobs.Add((Mob)mob);
-            Debug.WriteLine("Mob Added");
         }
 
         public virtual void AddProjectile(object projectile) {
@@ -87,9 +85,9 @@ namespace cevEngine2D.source.world
 
             for (int i = 0; i < allSprites.Count; i++) {
                 allSprites[i].Draw();
-                if (allSprites[i] is Mob) {
-                    Debug.WriteLine(allSprites[i].POS + " " + allSprites[i].DRect.X + " " + allSprites[i].DRect.Y);
-                }
+                //if (allSprites[i] is Projectile) {
+                //    Debug.WriteLine(allSprites[i].POS + " " + allSprites[i].DRect.X + " " + allSprites[i].DRect.Y);
+                //}
                 //Globals.DrawRectHollow(allSprites[i].Hitbox, 1);
                 //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].DRect, 1);
             }
