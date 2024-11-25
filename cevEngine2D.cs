@@ -33,7 +33,6 @@ namespace cevEngine2D {
         protected override void Initialize() {
             Globals.viewport = _graphics.GraphicsDevice.Viewport;
             GameGlobals.tileSize = 16;
-            GameGlobals.camera = new FollowCamera(Vector2.Zero); //load camera object
 
             base.Initialize();
         }
@@ -51,6 +50,7 @@ namespace cevEngine2D {
             spawnMap.Load();
 
             world = new World();
+            GameGlobals.camera = new FollowCamera(world.player.POS); //load camera object
 
             //Debug stuff for DrawRectHollow()
             Globals.rectangleTexture = new Texture2D(GraphicsDevice, 1, 1);
@@ -73,7 +73,7 @@ namespace cevEngine2D {
                 obj.Update();
             }
 
-            GameGlobals.camera.Follow(world.player.POS); //update camera offset with player movement
+            GameGlobals.camera.Update(Globals.gameTime, world.player.POS); //update camera offset with player movement
 
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
@@ -136,7 +136,7 @@ namespace cevEngine2D {
 
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
-            Globals.spriteBatch.Begin(samplerState: SamplerState.PointClamp);
+            Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, GameGlobals.camera.TransformMatrix);
 
             foreach (var layer in spawnMap.Layers) {
                 Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
@@ -145,8 +145,8 @@ namespace cevEngine2D {
 
                     foreach (Vector2 key in layer.MapMatrix.Keys) {
                         Rectangle dRect = new Rectangle(
-                            (int)key.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
-                            (int)key.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
+                            (int)key.X * GameGlobals.tileSize,
+                            (int)key.Y * GameGlobals.tileSize,
                             GameGlobals.tileSize,
                             GameGlobals.tileSize
                             );

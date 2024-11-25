@@ -6,20 +6,20 @@ namespace cevEngine2D.source.engine
     public class FollowCamera
     {
 
-        private Vector2 _position; //Set by player position field for map movement
-        public Vector2 Position { get { return _position; } }
+        public Vector2 Position { get; set; }
+        public Matrix TransformMatrix { get; private set; }
 
-        public FollowCamera(Vector2 position)
-        {
-            _position = position;
+        public FollowCamera(Vector2 initialPosition) {
+            Position = initialPosition;
         }
 
-        public void Follow(Vector2 offset)
-        {
-            _position = new Vector2(
-                -offset.X + Globals.viewport.Width / 2,
-                -offset.Y + Globals.viewport.Height / 2
-            );
+        public void Update(GameTime gameTime, Vector2 playerPosition) {
+            // Calculate the desired camera position, usually centered on the player
+            Position = playerPosition;
+            // Calculate the translation offset
+            Vector2 translationOffset = new Vector2(Globals.viewport.Width / 2, Globals.viewport.Height / 2) - Position;
+            // Create the translation matrix
+            TransformMatrix = Matrix.CreateTranslation(translationOffset.X, translationOffset.Y, 0);
         }
     }
 }

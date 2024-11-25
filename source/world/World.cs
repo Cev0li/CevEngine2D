@@ -29,12 +29,12 @@ namespace cevEngine2D.source.world
             //currently hardcoded scaling etc...
             player = new(
                 "archer",
-                new Vector2(5, 50),
+                new Vector2(50, 50),
                 new Vector2(100, 100),
                 new Rectangle(0, 0, 72, 72)
             );
 
-            spawnPoints.Add(new SpawnPoint(new Vector2(400, 240)));
+            spawnPoints.Add(new SpawnPoint(new Vector2(200, 240)));
 
             GameGlobals.PassProjectile = AddProjectile; //Add to projectiles list. Manage all projectiles in game.
             GameGlobals.PassMob = AddMob; //Add to mob list. Manage all mobs in game.
@@ -69,6 +69,7 @@ namespace cevEngine2D.source.world
 
         public virtual void AddMob(object mob) {
             mobs.Add((Mob)mob);
+            Debug.WriteLine("Mob Added");
         }
 
         public virtual void AddProjectile(object projectile) {
@@ -79,14 +80,17 @@ namespace cevEngine2D.source.world
             List<BasicUnit> allSprites = new();
             allSprites.AddRange(mapSprites);
             allSprites.AddRange(projectiles);
-            //allSprites.AddRange(mobs);
+            allSprites.AddRange(mobs);
             allSprites.Add(player);
             allSprites.AddRange(spawnPoints);
             allSprites.Sort((s1, s2) => s1.Hitbox.Bottom.CompareTo(s2.Hitbox.Bottom));
 
             for (int i = 0; i < allSprites.Count; i++) {
                 allSprites[i].Draw();
-                //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].Hitbox, 1);
+                if (allSprites[i] is Mob) {
+                    Debug.WriteLine(allSprites[i].POS + " " + allSprites[i].DRect.X + " " + allSprites[i].DRect.Y);
+                }
+                //Globals.DrawRectHollow(allSprites[i].Hitbox, 1);
                 //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].DRect, 1);
             }
 

@@ -3,32 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\units\\mob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\mob.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\units\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\unit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\projectiles\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\projectiles\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\globals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\projectiles\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\projectiles\\projectile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\spawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\spawnpoint.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\sprites\\mapunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\sprites\\mapunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\units\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\followcamera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,17 +58,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 188,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "cevEngine2D.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
               "RelativeDocumentMoniker": "cevEngine2D.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
-              "RelativeToolTip": "cevEngine2D.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAgwEsAAAA2AAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs*",
+              "RelativeToolTip": "cevEngine2D.cs*",
+              "ViewState": "AgIAADUAAAAAAAAAAAAwwJsAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T00:59:34.81Z",
               "IsPinned": true,
@@ -56,33 +76,112 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
+              "Title": "World.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
+              "RelativeDocumentMoniker": "source\\world\\World.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs*",
+              "RelativeToolTip": "source\\world\\World.cs*",
+              "ViewState": "AgIAADwAAAAAAAAAAAAwwFEAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:17:51.821Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Globals.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\Globals.cs",
+              "RelativeDocumentMoniker": "source\\engine\\Globals.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\Globals.cs",
+              "RelativeToolTip": "source\\engine\\Globals.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T02:27:25.145Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Mob.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Mob.cs",
+              "RelativeDocumentMoniker": "source\\world\\units\\Mob.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Mob.cs*",
+              "RelativeToolTip": "source\\world\\units\\Mob.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T02:19:02.077Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FollowCamera.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\FollowCamera.cs",
+              "RelativeDocumentMoniker": "source\\engine\\FollowCamera.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\FollowCamera.cs",
+              "RelativeToolTip": "source\\engine\\FollowCamera.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T02:08:59.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SpawnPoint.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\SpawnPoint.cs",
+              "RelativeDocumentMoniker": "source\\world\\SpawnPoint.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\SpawnPoint.cs",
+              "RelativeToolTip": "source\\world\\SpawnPoint.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T02:06:46.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MapUnit.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\MapUnit.cs",
+              "RelativeDocumentMoniker": "source\\engine\\sprites\\MapUnit.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\MapUnit.cs",
+              "RelativeToolTip": "source\\engine\\sprites\\MapUnit.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T02:05:41.854Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "BasicUnit.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\BasicUnit.cs",
               "RelativeDocumentMoniker": "source\\engine\\sprites\\BasicUnit.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\BasicUnit.cs",
               "RelativeToolTip": "source\\engine\\sprites\\BasicUnit.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAuwFwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T01:05:15.947Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Unit.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Unit.cs",
               "RelativeDocumentMoniker": "source\\world\\units\\Unit.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Unit.cs",
               "RelativeToolTip": "source\\world\\units\\Unit.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T01:05:09.806Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Projectile.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\projectiles\\Projectile.cs",
               "RelativeDocumentMoniker": "source\\world\\projectiles\\Projectile.cs",
@@ -95,20 +194,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "Player.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Player.cs",
               "RelativeDocumentMoniker": "source\\world\\units\\Player.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Player.cs*",
-              "RelativeToolTip": "source\\world\\units\\Player.cs*",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAowGYAAAAoAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Player.cs",
+              "RelativeToolTip": "source\\world\\units\\Player.cs",
+              "ViewState": "AgIAABEAAAAAAAAAAAAAABgAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-25T01:04:03.023Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "TileMap.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\tilemap\\TileMap.cs",
               "RelativeDocumentMoniker": "source\\engine\\tilemap\\TileMap.cs",
@@ -116,21 +215,7 @@
               "RelativeToolTip": "source\\engine\\tilemap\\TileMap.cs",
               "ViewState": "AgIAAOoAAAAAAAAAAAAQwOEAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T00:54:31.414Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "World.cs",
-              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
-              "RelativeDocumentMoniker": "source\\world\\World.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
-              "RelativeToolTip": "source\\world\\World.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAAAwwBUAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-21T01:17:51.821Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T00:54:31.414Z"
             }
           ]
         }

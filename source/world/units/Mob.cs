@@ -18,7 +18,7 @@ namespace cevEngine2D.source.world.units
 {
     internal class Mob : Unit {
         public Mob(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
-            
+            _speed = 4f;
         }
 
         public virtual void Update(Player player) {

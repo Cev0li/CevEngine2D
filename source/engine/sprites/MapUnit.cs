@@ -39,8 +39,8 @@ namespace cevEngine2D.source.engine.sprites {
             Globals.spriteBatch.Draw(
                 _texture,
                 _dRect = new Rectangle(
-                    (int)(_pos.X) + (int)GameGlobals.camera.Position.X,
-                    (int)(_pos.Y) + (int)GameGlobals.camera.Position.Y,
+                    (int)(_pos.X),
+                    (int)(_pos.Y),
                     (int)_size.X,
                     (int)_size.Y
                 ),

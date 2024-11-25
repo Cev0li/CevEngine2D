@@ -90,7 +90,7 @@ namespace cevEngine2D.source.engine.sprites
                 (int)_size.X,
                 (int)_size.Y
             );
-            updateHitBox(GameGlobals.camera.Position);
+            updateHitBox(Vector2.Zero);
         }
 
         protected void updateHitBox(Vector2 offset)
@@ -108,8 +108,8 @@ namespace cevEngine2D.source.engine.sprites
             Globals.spriteBatch.Draw(
                 _texture,
                 _dRect = new Rectangle(
-                    (int)(_pos.X - _size.X / 2) + (int)GameGlobals.camera.Position.X,
-                    (int)(_pos.Y - _size.Y / 2) + (int)GameGlobals.camera.Position.Y,
+                    (int)(_pos.X - _size.X / 2),
+                    (int)(_pos.Y - _size.Y / 2),
                     (int)_size.X,
                     (int)_size.Y
                 ),

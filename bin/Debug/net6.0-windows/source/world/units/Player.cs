@@ -22,15 +22,15 @@ namespace cevEngine2D.source.world.units
 
         //public Vector2 MapPosition { get { return _mapPosition; } }
 
-        public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect/*, Vector2 position*/) : base(texture, pos, size, sRect) {
+        public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
             flipEffect = SpriteEffects.None;
 
-            _dRect = new Rectangle(
-                Globals.viewport.Width / 2 - (int)size.X / 2,
-                Globals.viewport.Height / 2 - (int)size.Y / 2,
-                (int)size.X,
-                (int)size.Y
-                );
+            //_dRect = new Rectangle(
+            //    Globals.viewport.Width / 2 - (int)size.X / 2,
+            //    Globals.viewport.Height / 2 - (int)size.Y / 2,
+            //    (int)size.X,
+            //    (int)size.Y
+            //    );
 
             animations = new AnimationManager(this);
             animations.AddAnimation("W", 5, 72, false, false, new Vector2(0, 0));
@@ -108,6 +108,7 @@ namespace cevEngine2D.source.world.units
             }
 
             updateHitBox(Vector2.Zero);
+            base.Update();
         }
 
         public override void Draw() {
