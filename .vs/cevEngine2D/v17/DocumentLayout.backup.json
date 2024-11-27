@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\collisionmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\datastructures\\repeatingkeydictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\datastructures\\repeatingkeydictionary.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:cevengine2d.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,24 +19,12 @@
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\world.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\gameelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\gameelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\nondrawableelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\nondrawableelement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\sprites\\basicunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\engine\\tilemap\\tilemap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\world\\gameglobals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|solutionrelative:source\\world\\gameglobals.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{55CB0DE2-0A83-41D9-9A44-C763C006422C}|cevEngine2D.csproj|c:\\users\\markc\\source\\repos\\cevengine2d\\source\\engine\\sprites\\mapunit.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -50,17 +42,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 188,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "cevEngine2D.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
               "RelativeDocumentMoniker": "cevEngine2D.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\cevEngine2D.cs",
               "RelativeToolTip": "cevEngine2D.cs",
-              "ViewState": "AgIAAJEAAAAAAAAAAAAcwKwAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-08T00:59:34.81Z",
               "IsPinned": true,
@@ -68,55 +60,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "World.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
               "RelativeDocumentMoniker": "source\\world\\World.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\World.cs",
               "RelativeToolTip": "source\\world\\World.cs",
-              "ViewState": "AgIAAEQAAAAAAAAAAAAAABUAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAABQAAAAAAAAAAAAxwBUAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-21T01:17:51.821Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GameElement.cs",
-              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\GameElement.cs",
-              "RelativeDocumentMoniker": "source\\engine\\GameElement.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\GameElement.cs",
-              "RelativeToolTip": "source\\engine\\GameElement.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "RepeatingKeyDictionary.cs",
+              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\DataStructures\\RepeatingKeyDictionary.cs",
+              "RelativeDocumentMoniker": "source\\engine\\DataStructures\\RepeatingKeyDictionary.cs",
+              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\DataStructures\\RepeatingKeyDictionary.cs*",
+              "RelativeToolTip": "source\\engine\\DataStructures\\RepeatingKeyDictionary.cs*",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T01:24:37.717Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "NonDrawableElement.cs",
-              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\NonDrawableElement.cs",
-              "RelativeDocumentMoniker": "source\\engine\\NonDrawableElement.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\NonDrawableElement.cs",
-              "RelativeToolTip": "source\\engine\\NonDrawableElement.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-27T00:54:15.52Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "GameGlobals.cs",
-              "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\GameGlobals.cs",
-              "RelativeDocumentMoniker": "source\\world\\GameGlobals.cs",
-              "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\GameGlobals.cs",
-              "RelativeToolTip": "source\\world\\GameGlobals.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T20:57:09.75Z",
+              "WhenOpened": "2024-11-27T03:46:54.625Z",
               "EditorCaption": ""
             },
             {
@@ -127,14 +92,14 @@
               "RelativeDocumentMoniker": "source\\engine\\CollisionManager.cs",
               "ToolTip": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\CollisionManager.cs*",
               "RelativeToolTip": "source\\engine\\CollisionManager.cs*",
-              "ViewState": "AgIAACgAAAAAAAAAAAAgwD4AAAAyAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-26T15:00:10.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "TileMap.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\tilemap\\TileMap.cs",
               "RelativeDocumentMoniker": "source\\engine\\tilemap\\TileMap.cs",
@@ -142,12 +107,11 @@
               "RelativeToolTip": "source\\engine\\tilemap\\TileMap.cs",
               "ViewState": "AgIAAFgAAAAAAAAAAAAAAGwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-25T03:23:35.857Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-25T03:23:35.857Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "BasicUnit.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\BasicUnit.cs",
               "RelativeDocumentMoniker": "source\\engine\\sprites\\BasicUnit.cs",
@@ -155,12 +119,11 @@
               "RelativeToolTip": "source\\engine\\sprites\\BasicUnit.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAewBcAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T02:55:48.079Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T02:55:48.079Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "MapUnit.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\engine\\sprites\\MapUnit.cs",
               "RelativeDocumentMoniker": "source\\engine\\sprites\\MapUnit.cs",
@@ -168,12 +131,11 @@
               "RelativeToolTip": "source\\engine\\sprites\\MapUnit.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T03:12:18.383Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T03:12:18.383Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
               "Title": "Unit.cs",
               "DocumentMoniker": "C:\\Users\\markc\\source\\repos\\CevEngine2D\\source\\world\\units\\Unit.cs",
               "RelativeDocumentMoniker": "source\\world\\units\\Unit.cs",
@@ -181,8 +143,7 @@
               "RelativeToolTip": "source\\world\\units\\Unit.cs",
               "ViewState": "AgIAABoAAAAAAAAAAAAowCYAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-26T16:49:08.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-26T16:49:08.192Z"
             }
           ]
         }
