@@ -1,4 +1,5 @@
 ﻿#region
+using cevEngine2D.source.engine.exceptions;
 using cevEngine2D.source.engine.sprites;
 using cevEngine2D.source.world;
 using cevEngine2D.source.world.units;
@@ -16,28 +17,41 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 #endregion
 /*
  * Built for exporting JSON in Tiled map editor.
  * SetLayerSpriteSheets - Parses the data in the Tileset array to set the tileset associated with that layer. 
  *  the tileset can then be retrieved when drawing using the SpriteSheetLookup list. 
  *  ***use one tileset per layer when building maps***
+ *  
  * CreateSpriteSheetLookupTable - Associate Texture2D spritesheet with a string of the same name. Used to set Texture2D for draw calls. 
+ * 
  * SetLayerMapMatrix - Parse Data field in layers array into a dictionary representing a matrix location mapped to a 
  *  tile location on the spritesheet atlas.
+ *  
  * SetTilesetAtlas - Parse tileset data into Dictionary. Key represents the order of tiles counting along X axis. 
  *  Value represents the source rectangle for cropping that same tile from spritesheet.
- * SetObjectProperties - Current iteration sets source rectangle for Tiled object layer. Map objects are often multiple tiles large.
- *  Handling them as one element is necessary for smooth game mechaincs. This method assumes in tiled you have a template rectangle placed
- *  over the tile representations of your object layer. That template contains a custom property named SourceRect holding the source rectangle
- *  to cut that object out of its SpriteSheet. The method then deletes the tile layer associated with that layer, and the game can use this
- *  portion of the TileMap to handle map objects. the object layer in Tiled should be named the same as the object layer to avoid visual bugs. 
- * CreateMapUnits - Takes the object layers objects and populates a list with MapUnits. The object layers become sprites capable of game mechanics.
- *  This list should be passed into areas of the game that handle collisions, Y sorting, etc.. Editing the MapObject class will create more robust
- *  map objects.
+ *  
+ * SetObjectProperties - Check objects in object layers for custom properties. Add conditional logic for each of the custom properties needed for your game.
+ *  Current iteration sets source rectangle for any object possessing a custom property "SourceRect". Map objects are often multiple tiles large.
+ *  Handling them as one element is necessary for efficent game construction. This method assumes you have a template rectangle placed
+ *  over the tile representations of your object layer in the level edior.
+ *  The method then deletes the tile layer associated with that layer. The deleted tile layer will 
+ *  assign its sprite sheet string to the object layer at this moment. The object layer in the level editor should be named the same as the tile layer. 
+ *  
+ * CreateMapUnits - Takes the object layers objects and populates the MapUnit list with MapUnit objects. These MapUnit objects are sprites capable of 
+ *  defining game mechanics. This list should be passed into areas of the game that handle drawing, Y sorting, etc.. The MapObject class defines the 
+ *  behaviour of these game entities. 
+ *  
+ *  Lists and their purpose:
+ *  MapUnits: Created from Tiled object layers that have custom properties defined meeting the MapUnit constructor. 
+ *  CollisionObjects: Created from Tiled object layers that do not satisfy the MapUnit constructor. Created for collision checking. 
+ *      Example: A tree only needs collisions at its base. The player should be able to walk behind the tree but not into the tree. 
+ *      a rectangle object can be placed at the tree base in Tiled, and used to check collisions against this part of the tree in the 
+ *      Update loop. The rest of the tree can be walked behind using a Y sort drawing feature.
  */
-namespace cevEngine2D.source.engine.tilemap
-{
+namespace cevEngine2D.source.engine.tilemap {
     internal class TileMap {
         [JsonPropertyName("height")]
         public int Height { get; set; }
@@ -51,7 +65,8 @@ namespace cevEngine2D.source.engine.tilemap
         public Layer[] Layers { get; set; }
         [JsonPropertyName("tilesets")]
         public Tileset[] Tilesets { get; set; }
-        public List<BasicUnit> MapObjects = new();
+        public List<BasicUnit> MapUnits = new();
+        public List<NonDrawableElement> CollisionObjects = new();
         public Dictionary<string, Texture2D> SpriteSheetLookup = new();
 
         public void Load() {
@@ -67,18 +82,38 @@ namespace cevEngine2D.source.engine.tilemap
             foreach (var layer in Layers) {
                 if (layer.Type == "objectgroup") {
                     foreach (var obj in layer.Objects) {
-                        MapUnit mapObject = new MapUnit(
-                            layer.SpriteSheet,
-                            new Vector2((((int)Math.Round(obj.X) / this.TileWidth) * GameGlobals.tileSize), (((int)Math.Round(obj.Y) / this.TileHeight) * GameGlobals.tileSize)),
-                            new Vector2((int)obj.Width / this.TileWidth * GameGlobals.tileSize, (int)obj.Height / this.TileHeight * GameGlobals.tileSize),
-                            obj.SourceRect
-                        );
-                        MapObjects.Add(mapObject);
+                        if (!(layer.SpriteSheet == null)) {
+                            MapUnit mapObject = new(
+                                layer.SpriteSheet,
+                                new Vector2(EditorToGameDimensions(obj.X, TileWidth), EditorToGameDimensions(obj.Y, TileHeight)),
+                                new Vector2(EditorToGameDimensions(obj.Width, TileWidth), EditorToGameDimensions(obj.Height, TileHeight)),
+                                obj.SourceRect
+                            );
+                            MapUnits.Add(mapObject);
+
+                        } else {
+                            try {
+                                NonDrawableElement mapObject = new(
+                                    new Vector2(EditorToGameDimensions(obj.X, TileWidth), EditorToGameDimensions(obj.Y, TileHeight)),
+                                    new Vector2(EditorToGameDimensions(obj.Width, TileWidth), EditorToGameDimensions(obj.Height, TileHeight))
+                                );
+                                CollisionObjects.Add(mapObject);
+                            } catch (Exception ex) {
+                                System.Windows.Forms.MessageBox.Show($"Error: {layer.Name} failed to create Map Units. \nHandle your custom Map properties accordingly.\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
                     }
                 }
             }
         }
 
+        //BEGIN: Helper methods
+        public int EditorToGameDimensions(float editorDim, int mapDim) {
+            float toCast = (float)Math.Round(editorDim / mapDim) * GameGlobals.tileSize;
+            return ((int)toCast);
+        }
+
+        //BEGIN: Initalize map methods
         public void createSpriteSheetLookupTable() {
             for (int i = 0; i < Tilesets.Length; i++) {
                 SpriteSheetLookup.Add(Tilesets[i].Name, Globals.content.Load<Texture2D>(Tilesets[i].Name));
@@ -113,7 +148,7 @@ namespace cevEngine2D.source.engine.tilemap
         public void setLayerSpriteSheets() {
             int[] firstgids;
             Dictionary<int, string> tilesetData = new(); //holds firstGID of each tileset in TileMap
-            //Set lookup table for firstGID/name of tileset
+                                                         //Set lookup table for firstGID/name of tileset
             foreach (var set in Tilesets) {
                 tilesetData.Add(set.firstGID, set.Name);
             }
@@ -142,9 +177,10 @@ namespace cevEngine2D.source.engine.tilemap
                     //Handle object Properties
                     for (int i = 0; i < layer.Objects.Length; i++) {
                         LayerProperty[] props = layer.Objects[i].ObjectData;
-                        //Initalize source Rectangle by parsing the object property SourceRect string containing rectangle args
+                        //Check for object properties
                         if (props != null) {
                             LayerProperty sourceRectProp = props.FirstOrDefault(p => p.Name == "SourceRect");
+                            //Initalize source Rectangle by parsing the object property SourceRect
                             if (sourceRectProp != null) {
                                 int[] rectangleIntegers = sourceRectProp.Value.Split(',')
                                     .Select(s => {
@@ -163,7 +199,7 @@ namespace cevEngine2D.source.engine.tilemap
                                     );
                             }
                         } else {
-                            Debug.WriteLine($"Object in {layer.Name} does not possess any custom properties in level editor");
+                            Debug.WriteLine($"Object {i} in {layer.Name} does not possess any custom properties in level editor");
                         }
                     }
 
@@ -245,11 +281,10 @@ namespace cevEngine2D.source.engine.tilemap
         public MapObject[] Objects { get; set; }
         [JsonPropertyName("data")]
         public int[] Data { get; set; }
-        public string SpriteSheet { get; set; }
-
         [JsonPropertyName("properties")]
         public LayerProperty[] LayerProps { get; set; }
         public Dictionary<Vector2, int> MapMatrix { get; set; }
+        public string SpriteSheet { get; set; }
     }
 
     public class MapObject {

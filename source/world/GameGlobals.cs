@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using cevEngine2D.source.engine;
+using cevEngine2D.source.engine.tilemap;
 #endregion
 
 namespace cevEngine2D.source.world

@@ -22,13 +22,13 @@ namespace cevEngine2D.source.world
         public Player player; //TODO;handle collision logic so this is private
         private List<Projectile> projectiles = new();
         private List<Mob> mobs = new();
-        public List<SpawnPoint> spawnPoints = new();
+        private List<SpawnPoint> spawnPoints = new();
 
         public World() {
             //currently hardcoded scaling etc...
             player = new(
                 "archer",
-                new Vector2(50, 50),
+                new Vector2(500, 500),
                 new Vector2(100, 100),
                 new Rectangle(0, 0, 72, 72)
             );
@@ -76,9 +76,10 @@ namespace cevEngine2D.source.world
 
         public void Draw(List<BasicUnit> mapSprites) {
             List<BasicUnit> allSprites = new();
+            
             allSprites.AddRange(mapSprites);
-            allSprites.AddRange(projectiles);
-            allSprites.AddRange(mobs);
+            //allSprites.AddRange(projectiles);
+            //allSprites.AddRange(mobs);
             allSprites.Add(player);
             allSprites.AddRange(spawnPoints);
             allSprites.Sort((s1, s2) => s1.Hitbox.Bottom.CompareTo(s2.Hitbox.Bottom));

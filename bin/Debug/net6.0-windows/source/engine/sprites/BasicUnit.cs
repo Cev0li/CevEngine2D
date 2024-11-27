@@ -21,11 +21,11 @@ using cevEngine2D.source.world.units;
  * Use hitbox for all game mechanics and destination rectangle for all movement.
  */
 namespace cevEngine2D.source.engine.sprites {
-    internal class BasicUnit {
+    public class BasicUnit : IGameElement{
         internal Texture2D _texture;
         protected Vector2 _pos, _size;
         protected Rectangle _dRect, _sRect, _hitbox;
-        //Properties
+
         public Texture2D SpriteTexture { get { return _texture; } }
         public Vector2 POS { get { return _pos; } }
         public Vector2 Size { get { return _size; } }

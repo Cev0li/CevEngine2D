@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("cevEngine2D")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30bcb89941039e078bf8c5c4b6faa75d53830fda")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2b055113fdadda63af9d967363779d63b0ea6b36")]
 [assembly: System.Reflection.AssemblyProductAttribute("cevEngine2D")]
 [assembly: System.Reflection.AssemblyTitleAttribute("cevEngine2D")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

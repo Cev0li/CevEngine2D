@@ -24,6 +24,8 @@ namespace cevEngine2D {
         private World world;
         private TileMap spawnMap;
 
+        private CollisionManager<NonDrawableElement> collisionManager;
+
         public cevEngine2D() {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -32,29 +34,32 @@ namespace cevEngine2D {
 
         protected override void Initialize() {
             Globals.viewport = _graphics.GraphicsDevice.Viewport;
-            GameGlobals.tileSize = 16;
+            GameGlobals.tileSize = 24;
+            Globals.content = this.Content;
+            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
+            Globals.keyboard = new CevKeyboard();
+            Globals.mouse = new CevMouseControl();
+            //Debug stuff for DrawRectHollow()
+            Globals.rectangleTexture = new Texture2D(GraphicsDevice, 1, 1);
+            Globals.rectangleTexture.SetData(new Color[] { new(255, 0, 0, 255) });
+
+
 
             base.Initialize();
         }
 
         protected override void LoadContent() {
-            Globals.content = this.Content;
-            Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Globals.keyboard = new CevKeyboard();
-            Globals.mouse = new CevMouseControl();
 
             //load spawn region map
-            InitalizeMap createSpawnMap = new("../../../data/spawnTEST.tmj");
+            InitalizeMap createSpawnMap = new("../../../data/spawnCollisionTEST.tmj");
             spawnMap = createSpawnMap.getMapObject();
             spawnMap.Load();
+            collisionManager = new CollisionManager<NonDrawableElement>(spawnMap.CollisionObjects);
 
             world = new World();
-            GameGlobals.camera = new FollowCamera(world.player.POS); //load camera object
 
-            //Debug stuff for DrawRectHollow()
-            Globals.rectangleTexture = new Texture2D(GraphicsDevice, 1, 1);
-            Globals.rectangleTexture.SetData(new Color[] { new(255, 0, 0, 255) });
+            GameGlobals.camera = new FollowCamera(world.player.POS); //load camera object
         }
 
         protected override void Update(GameTime gameTime) {
@@ -65,11 +70,12 @@ namespace cevEngine2D {
             Globals.mouse.Update();
             Globals.gameTime = gameTime;
 
+
             float[] playerVelocity = { 2f, 2f, 2f, 2f };
 
             world.Update(playerVelocity);
 
-            foreach (var obj in spawnMap.MapObjects) {
+            foreach (var obj in spawnMap.MapUnits) {
                 obj.Update();
             }
 
@@ -81,68 +87,15 @@ namespace cevEngine2D {
             base.Update(gameTime);
         }
 
-        //Define the collision point between rectangles and handle player movement. Needs optimization
-        //internal void HandleCollisions(TileLayer collisionLayer, float[] playerVelocity, Player player) {
-        //    foreach (var item in collisionLayer.tileMap) {
-        //        Vector2 position = item.Key;
-        //        //Rect for current position of collision layer tiles
-        //        Rectangle mapLocation = new(
-        //                (int)position.X * GameGlobals.tileSize + (int)GameGlobals.camera.Position.X,
-        //                (int)position.Y * GameGlobals.tileSize + (int)GameGlobals.camera.Position.Y,
-        //                GameGlobals.tileSize,
-        //                GameGlobals.tileSize
-        //        );
-        //        //Evaluates true when Player rect intersects a collision tile.
-        //        if (mapLocation.Intersects(player.DRect)) {
-        //            //Evaluate state of player and collision rectangle relationship
-        //            int[] possibleIntersections = new int[] {
-        //                Math.Abs(mapLocation.Top - player.DRect.Top),
-        //                Math.Abs(mapLocation.Right - player.DRect.Right),
-        //                Math.Abs(mapLocation.Bottom - player.DRect.Bottom),
-        //                Math.Abs(mapLocation.Left - player.DRect.Left)
-        //                };
-        //            //Max value evaluates to the location of collision on rectangles
-        //            int maxValue = -1;
-        //            int maxIndex = -1;
-        //            for (int i = 0; i < possibleIntersections.Length; i++) {
-        //                if (possibleIntersections[i] > maxValue) {
-        //                    maxValue = possibleIntersections[i];
-        //                    maxIndex = i;
-
-        //                }
-        //            }
-        //            //Stop player movement against collision tile
-        //            switch (maxIndex) {
-        //                case 0:
-        //                    playerVelocity[0] = 0;
-        //                    //Debug.WriteLine("top");
-        //                    break;
-        //                case 1:
-        //                    playerVelocity[1] = 0;
-        //                    //Debug.WriteLine("Right");
-        //                    break;
-        //                case 2:
-        //                    playerVelocity[2] = 0;
-        //                    //Debug.WriteLine("Bottom");
-        //                    break;
-        //                case 3:
-        //                    playerVelocity[3] = 0;
-        //                    //Debug.WriteLine("Left");
-        //                    break;
-        //            }
-        //        }
-        //    }
-        //}
-
         protected override void Draw(GameTime gameTime) {
             GraphicsDevice.Clear(Color.Black);
             Globals.spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.None, RasterizerState.CullCounterClockwise, null, GameGlobals.camera.TransformMatrix);
 
             foreach (var layer in spawnMap.Layers) {
-                Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
-                if (layer.Type == "tilelayer") {
-                    Tileset tilesetData = spawnMap.Tilesets.FirstOrDefault(set => set.Name == layer.SpriteSheet);
 
+                if (layer.Type == "tilelayer") {
+                    Texture2D layerTexture = spawnMap.SpriteSheetLookup[layer.SpriteSheet];
+                    Tileset tilesetData = spawnMap.Tilesets.FirstOrDefault(set => set.Name == layer.SpriteSheet);
                     foreach (Vector2 key in layer.MapMatrix.Keys) {
                         Rectangle dRect = new Rectangle(
                             (int)key.X * GameGlobals.tileSize,
@@ -154,9 +107,24 @@ namespace cevEngine2D {
                         Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
                     }
                 }
+
+                //if (layer.Name == "Collisions") {
+                //    foreach (var obj in layer.Objects) {
+                //        float x = obj.Width / spawnMap.TileWidth * GameGlobals.tileSize;
+                //        float y = obj.Height / spawnMap.TileHeight * GameGlobals.tileSize;
+                //        Globals.DrawRectHollow(new Rectangle(
+                //            (((int)Math.Round(obj.X) / spawnMap.TileWidth) * GameGlobals.tileSize),
+                //            (((int)Math.Round(obj.Y) / spawnMap.TileHeight) * GameGlobals.tileSize),
+                //            (int)x,
+                //            (int)y),
+                //        1);
+                //    }
+                //}
             }
 
-            world.Draw(spawnMap.MapObjects);
+
+            collisionManager.CheckCollisions(world.player); //DEBUG ONLY REMOVE WHEN CHECK COLLISIONS IS DONE
+            world.Draw(spawnMap.MapUnits);
 
             Globals.spriteBatch.End();
             base.Draw(gameTime);
