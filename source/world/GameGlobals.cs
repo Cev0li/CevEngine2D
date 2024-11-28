@@ -22,6 +22,8 @@ namespace cevEngine2D.source.world
         public static PassObject PassProjectile; //initalized in World class
         public static PassObject PassMob; //initalized in World class
 
+        public static CollisionManager<NonDrawableElement> collisionManager;
+
         public static FollowCamera camera; //allows for viewport centered player. Translates player movement to the map
         public static int tileSize;
     }

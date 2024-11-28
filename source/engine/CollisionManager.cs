@@ -3,7 +3,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.animate;
 using cevEngine2D.source.engine.DataStructures;
 using cevEngine2D.source.engine.input;
@@ -22,11 +21,15 @@ using SharpDX.Direct2D1;
 using System.Windows.Forms;
 using System.Collections;
 using cevEngine2D.source.engine.sprites;
+using cevEngine2D.source.engine.interfaces;
 #endregion
 
-namespace cevEngine2D.source.engine {
-    internal class CollisionManager<T> where T: IGameElement {
+namespace cevEngine2D.source.engine
+{
+    public class CollisionManager<T> : ICollisionManager where T : IGameElement {
         private RepeatingKeyDictionary<int, Rectangle> _collisionObjects = new();
+
+        public event Action<String> CollisionEvent;
 
         public CollisionManager(List<T> collisionObjects) {
                 foreach (var collisionObject in collisionObjects) {
@@ -46,6 +49,7 @@ namespace cevEngine2D.source.engine {
             int index = _collisionObjects.CheckInsertionPoint(unit.UnitPerimeter.X);
             index--; //Decrement index to capture necessary lists from _collisionObjects
 
+            //Capture index before the collision location, at location, and after the location
             List<Rectangle> checkRects = new();
             for (int i = 0; i < 3; i++) {
                 if (index > -1) {
@@ -61,8 +65,9 @@ namespace cevEngine2D.source.engine {
             int count = 0;
             foreach (var rect in checkRects) {
                 if (unit.UnitPerimeter.Intersects(rect)) {
+                    CollisionEvent?.Invoke("Collision Event SENT!");
                     Globals.DrawRectHollow(rect, 1);
-                    Debug.WriteLine("INTERSECT " + count);
+                    //Debug.WriteLine("INTERSECT " + count);
                     count++;
                 }
             }

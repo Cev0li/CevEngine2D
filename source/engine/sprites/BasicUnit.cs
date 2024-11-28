@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using cevEngine2D.source.world.units;
+using cevEngine2D.source.engine.interfaces;
 #endregion
 /*
  * Foundation of any interactable object in game. Tile layers are drawn directly from TileMap class in Game class.
@@ -20,7 +21,8 @@ using cevEngine2D.source.world.units;
  * and mapped to game using the destination rectangle. They are updated along with destination rectangles. 
  * Use hitbox for all game mechanics and destination rectangle for all movement.
  */
-namespace cevEngine2D.source.engine.sprites {
+namespace cevEngine2D.source.engine.sprites
+{
     public class BasicUnit : IGameElement{
         internal Texture2D _texture;
         protected Vector2 _pos, _size;

@@ -15,7 +15,7 @@ using cevEngine2D.source.engine.sprites;
 #endregion
 
 namespace cevEngine2D.source.world.units {
-    internal class Unit : BasicUnit {
+    public class Unit : BasicUnit {
 
         protected bool _dead, _diagnolLeft, _diagnolRight;
         protected float _speed;

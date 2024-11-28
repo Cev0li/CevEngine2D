@@ -51,7 +51,8 @@ using System.Windows.Forms;
  *      a rectangle object can be placed at the tree base in Tiled, and used to check collisions against this part of the tree in the 
  *      Update loop. The rest of the tree can be walked behind using a Y sort drawing feature.
  */
-namespace cevEngine2D.source.engine.tilemap {
+namespace cevEngine2D.source.engine.tilemap
+{
     internal class TileMap {
         [JsonPropertyName("height")]
         public int Height { get; set; }

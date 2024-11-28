@@ -17,14 +17,13 @@ using System.Linq;
 using cevEngine2D.source.engine.tilemap.utils;
 #endregion
 
-namespace cevEngine2D {
+namespace cevEngine2D
+{
     public class cevEngine2D : Game {
         private GraphicsDeviceManager _graphics;
 
         private World world;
         private TileMap spawnMap;
-
-        private CollisionManager<NonDrawableElement> collisionManager;
 
         public cevEngine2D() {
             _graphics = new GraphicsDeviceManager(this);
@@ -55,7 +54,7 @@ namespace cevEngine2D {
             InitalizeMap createSpawnMap = new("../../../data/spawnCollisionTEST.tmj");
             spawnMap = createSpawnMap.getMapObject();
             spawnMap.Load();
-            collisionManager = new CollisionManager<NonDrawableElement>(spawnMap.CollisionObjects);
+            GameGlobals.collisionManager = new CollisionManager<NonDrawableElement>(spawnMap.CollisionObjects);
 
             world = new World();
 
@@ -69,7 +68,6 @@ namespace cevEngine2D {
             Globals.keyboard.Update();
             Globals.mouse.Update();
             Globals.gameTime = gameTime;
-
 
             float[] playerVelocity = { 2f, 2f, 2f, 2f };
 
@@ -123,7 +121,7 @@ namespace cevEngine2D {
             }
 
 
-            collisionManager.CheckCollisions(world.player); //DEBUG ONLY REMOVE WHEN CHECK COLLISIONS IS DONE
+            GameGlobals.collisionManager.CheckCollisions(world.player); //DEBUG ONLY REMOVE WHEN CHECK COLLISIONS IS DONE
             world.Draw(spawnMap.MapUnits);
 
             Globals.spriteBatch.End();

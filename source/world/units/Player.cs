@@ -5,13 +5,15 @@ using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.input;
 using cevEngine2D.source.world.projectiles;
+using cevEngine2D.source.engine.sprites;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Reflection.Emit;
+using System.Reflection;
 using cevEngine2D.source.engine.animate;
+using cevEngine2D.source.engine.interfaces;
 #endregion
 //TODO: State machine
 namespace cevEngine2D.source.world.units
@@ -19,6 +21,9 @@ namespace cevEngine2D.source.world.units
     internal class Player : Unit {
         private AnimationManager animations;
         private SpriteEffects flipEffect;
+
+        private ICollisionManager collisionManager;
+   
 
         //public Vector2 MapPosition { get { return _mapPosition; } }
 
@@ -34,6 +39,16 @@ namespace cevEngine2D.source.world.units
             animations.AddAnimation("WA", 5, 72, false, false, new Vector2(1, 0));
             animations.AddAnimation("SD", 5, 72, false, false, new Vector2(3, 0));
             animations.AddAnimation("SA", 5, 72, false, false, new Vector2(3, 0));
+        }
+
+        public void SubscribeToCollisionEvent(ICollisionManager eventRaiser) {
+            collisionManager = eventRaiser; 
+            collisionManager.CollisionEvent += HandleCollisions;
+        }
+
+        public void HandleCollisions(String check) {
+            //Debug.WriteLine(check);
+            collisionManager.CollisionEvent -= HandleCollisions;
         }
 
         public void Update(float[] velocity) {

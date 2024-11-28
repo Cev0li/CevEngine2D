@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using cevEngine2D.source.engine.sprites;
+using cevEngine2D.source.engine;
 #endregion
 
 
@@ -41,6 +42,7 @@ namespace cevEngine2D.source.world
 
         public void Update(float[] playerVelocity) {
             player.Update(playerVelocity);
+            player.SubscribeToCollisionEvent(GameGlobals.collisionManager);
 
             for (int i = 0; i < projectiles.Count; i++) {
                 projectiles[i].Update(mobs.ToList<Unit>());
