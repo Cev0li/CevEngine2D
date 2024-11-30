@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace cevEngine2D.source.engine.interfaces {
     internal interface ICollisionManager {
         public void CheckCollisions(Unit unit) { }
-        public event Action<int> CollisionEvent;
+        public event Action<String> CollisionEvent;
 
     }
 }

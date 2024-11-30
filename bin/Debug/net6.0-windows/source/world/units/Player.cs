@@ -24,7 +24,6 @@ namespace cevEngine2D.source.world.units {
         private AnimationManager animations;
         private ICollisionManager collisionManager;
 
-        private List<Direction> collisionLocation = new();
         private SpriteEffects flipEffect;
 
         public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
@@ -48,18 +47,14 @@ namespace cevEngine2D.source.world.units {
             collisionManager.CollisionEvent += HandleCollisions;
         }
 
-        public void HandleCollisions(int i) {
-            Direction direction = (Direction)i;
-            collisionLocation.Add(direction);
+        public void HandleCollisions(String message) {
+            Debug.WriteLine(message);
         }
 
         public override void Update() {
             Vector2 velocity = Vector2.Zero;
 
-            //Debug.WriteLine(collisionLocation.Count());
-            if (Globals.keyboard.GetPress("W") 
-                && Globals.keyboard.GetPress("A") 
-                && !collisionLocation.Contains(Direction.NE)) {
+            if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("A")) {
                 velocity.X -= 1;
                 velocity.Y -= 1;
                 animations.Update("WA");
@@ -77,7 +72,7 @@ namespace cevEngine2D.source.world.units {
                 velocity.X += 1;
                 velocity.Y += 1;
                 animations.Update("SD");
-            } else if (Globals.keyboard.GetPress("A") && !collisionLocation.Contains(Direction.E) && !collisionLocation.Contains(Direction.NE)) {
+            } else if (Globals.keyboard.GetPress("A")) {
                 velocity.X -= 1;
                 animations.Update("A");
                 flipEffect = SpriteEffects.FlipHorizontally;
@@ -85,7 +80,7 @@ namespace cevEngine2D.source.world.units {
                 velocity.X += 1;
                 animations.Update("D");
                 flipEffect = SpriteEffects.None;
-            } else if (Globals.keyboard.GetPress("W") && !collisionLocation.Contains(Direction.N) && !collisionLocation.Contains(Direction.NE)) {
+            } else if (Globals.keyboard.GetPress("W")) {
                 velocity.Y -= 1;
                 animations.Update("W");
                 flipEffect = SpriteEffects.None;
@@ -112,7 +107,6 @@ namespace cevEngine2D.source.world.units {
                 );
             }
 
-            collisionLocation.Clear();
             base.Update();
         }
 

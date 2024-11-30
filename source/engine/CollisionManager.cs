@@ -29,7 +29,7 @@ namespace cevEngine2D.source.engine
     public class CollisionManager<T> : ICollisionManager where T : IGameElement {
         private RepeatingKeyDictionary<int, Rectangle> _collisionObjects = new();
 
-        public event Action<int> CollisionEvent;
+        public event Action<String> CollisionEvent;
 
         public CollisionManager(List<T> collisionObjects) {
                 foreach (var collisionObject in collisionObjects) {
@@ -68,14 +68,9 @@ namespace cevEngine2D.source.engine
                     for (int i = 0; i < unit.UnitPerimeterSliced.Count; i++) { //check direction of collision
                         Rectangle perimeterCheck = unit.UnitPerimeterSliced.ElementAt(i);
                         if (perimeterCheck.Intersects(rect)) {
-                            if (rect.Intersects(unit.Hitbox)) {
-                               // Debug.WriteLine("Event" + count);
-                                count++;
-                                CollisionEvent?.Invoke(i); 
-                            } //check for collision on hitbox
+                            CollisionEvent?.Invoke("Event");
                         } 
                     }
-                    //Globals.DrawRectHollow(rect, 1);
                 }
             }
         }

@@ -63,7 +63,6 @@ namespace cevEngine2D.source.engine.DataStructures {
             TKey[] tkeys = _map.Keys.ToArray();
             int index = Array.BinarySearch(tkeys, value);
             index = index > 0 ? index : ~index;
-            Debug.WriteLine(index);
             return index;
 
             //if (_map.TryGetValue(key, out List<TValue> values)) {
