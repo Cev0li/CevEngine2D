@@ -29,7 +29,7 @@ namespace cevEngine2D.source.engine
     public class CollisionManager<T> : ICollisionManager where T : IGameElement {
         private RepeatingKeyDictionary<int, Rectangle> _collisionObjects = new();
 
-        public event Action<String> CollisionEvent;
+        public event Action<int> CollisionEvent;
 
         public CollisionManager(List<T> collisionObjects) {
                 foreach (var collisionObject in collisionObjects) {
@@ -43,9 +43,10 @@ namespace cevEngine2D.source.engine
                     _collisionObjects.Add((int)collisionObject.POS.X, dRect);
             }
         }
-
+        int count = 0;
         public void CheckCollisions(Unit unit) {
-            Globals.DrawRectHollow(unit.UnitPerimeter, 1);
+            //Globals.DrawRectHollow(unit.UnitPerimeter, 1);
+            //Locate units collision perimeter on the X axis against collision manager objects
             int index = _collisionObjects.CheckInsertionPoint(unit.UnitPerimeter.X);
             index--; //Decrement index to capture necessary lists from _collisionObjects
 
@@ -61,14 +62,20 @@ namespace cevEngine2D.source.engine
                 }
                 index++;
             }
-
-            int count = 0;
+ 
             foreach (var rect in checkRects) {
-                if (unit.UnitPerimeter.Intersects(rect)) {
-                    CollisionEvent?.Invoke("Collision Event SENT!");
-                    Globals.DrawRectHollow(rect, 1);
-                    //Debug.WriteLine("INTERSECT " + count);
-                    count++;
+                if (unit.UnitPerimeter.Intersects(rect)) { //If larger perimeter intersects collision managers objects
+                    for (int i = 0; i < unit.UnitPerimeterSliced.Count; i++) { //check direction of collision
+                        Rectangle perimeterCheck = unit.UnitPerimeterSliced.ElementAt(i);
+                        if (perimeterCheck.Intersects(rect)) {
+                            if (rect.Intersects(unit.Hitbox)) {
+                               // Debug.WriteLine("Event" + count);
+                                count++;
+                                CollisionEvent?.Invoke(i); 
+                            } //check for collision on hitbox
+                        } 
+                    }
+                    //Globals.DrawRectHollow(rect, 1);
                 }
             }
         }

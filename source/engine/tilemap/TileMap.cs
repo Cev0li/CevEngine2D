@@ -79,6 +79,14 @@ namespace cevEngine2D.source.engine.tilemap
             createMapUnits();
         }
 
+
+        //BEGIN: Helper methods
+        public int EditorToGameDimensions(float editorDim, int mapDim) {
+            float toCast = (float)Math.Round(editorDim / mapDim) * GameGlobals.tileSize;
+            return ((int)toCast);
+        }
+
+        //BEGIN: Initalize map methods
         public void createMapUnits() {
             foreach (var layer in Layers) {
                 if (layer.Type == "objectgroup") {
@@ -108,13 +116,6 @@ namespace cevEngine2D.source.engine.tilemap
             }
         }
 
-        //BEGIN: Helper methods
-        public int EditorToGameDimensions(float editorDim, int mapDim) {
-            float toCast = (float)Math.Round(editorDim / mapDim) * GameGlobals.tileSize;
-            return ((int)toCast);
-        }
-
-        //BEGIN: Initalize map methods
         public void createSpriteSheetLookupTable() {
             for (int i = 0; i < Tilesets.Length; i++) {
                 SpriteSheetLookup.Add(Tilesets[i].Name, Globals.content.Load<Texture2D>(Tilesets[i].Name));

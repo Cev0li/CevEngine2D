@@ -33,7 +33,7 @@ namespace cevEngine2D
 
         protected override void Initialize() {
             Globals.viewport = _graphics.GraphicsDevice.Viewport;
-            GameGlobals.tileSize = 24;
+            GameGlobals.tileSize = 64;
             Globals.content = this.Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.keyboard = new CevKeyboard();
@@ -58,7 +58,7 @@ namespace cevEngine2D
 
             world = new World();
 
-            GameGlobals.camera = new FollowCamera(world.player.POS); //load camera object
+            GameGlobals.camera = new FollowCamera(world.Player.POS); //load camera object
         }
 
         protected override void Update(GameTime gameTime) {
@@ -69,15 +69,14 @@ namespace cevEngine2D
             Globals.mouse.Update();
             Globals.gameTime = gameTime;
 
-            float[] playerVelocity = { 2f, 2f, 2f, 2f };
-
-            world.Update(playerVelocity);
+            GameGlobals.collisionManager.CheckCollisions(world.Player);
+            world.Update();
 
             foreach (var obj in spawnMap.MapUnits) {
                 obj.Update();
             }
 
-            GameGlobals.camera.Update(Globals.gameTime, world.player.POS); //update camera offset with player movement
+            GameGlobals.camera.Update(Globals.gameTime, world.Player.POS); //update camera offset with player movement
 
             Globals.keyboard.UpdateOld();
             Globals.mouse.UpdateOld();
@@ -105,24 +104,16 @@ namespace cevEngine2D
                         Globals.spriteBatch.Draw(layerTexture, dRect, sRect, Color.White);
                     }
                 }
-
-                //if (layer.Name == "Collisions") {
-                //    foreach (var obj in layer.Objects) {
-                //        float x = obj.Width / spawnMap.TileWidth * GameGlobals.tileSize;
-                //        float y = obj.Height / spawnMap.TileHeight * GameGlobals.tileSize;
-                //        Globals.DrawRectHollow(new Rectangle(
-                //            (((int)Math.Round(obj.X) / spawnMap.TileWidth) * GameGlobals.tileSize),
-                //            (((int)Math.Round(obj.Y) / spawnMap.TileHeight) * GameGlobals.tileSize),
-                //            (int)x,
-                //            (int)y),
-                //        1);
-                //    }
-                //}
             }
 
-
-            GameGlobals.collisionManager.CheckCollisions(world.player); //DEBUG ONLY REMOVE WHEN CHECK COLLISIONS IS DONE
+            foreach(Rectangle rect in world.Player.UnitPerimeterSliced) {
+                Globals.DrawRectHollow(rect, 1);
+            }
             world.Draw(spawnMap.MapUnits);
+
+            foreach (var obj in spawnMap.CollisionObjects) {
+                Globals.DrawRectHollow(obj.DRect, 1);
+            }
 
             Globals.spriteBatch.End();
             base.Draw(gameTime);

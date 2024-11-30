@@ -17,7 +17,7 @@ using cevEngine2D.source.engine.sprites;
 namespace cevEngine2D.source.world.units {
     public class Unit : BasicUnit {
 
-        protected bool _dead, _diagnolLeft, _diagnolRight;
+        protected bool _dead;
         protected float _speed;
         public bool Dead { get { return _dead; } set { _dead = value; } }
         public float Speed { get { return _speed; } }
@@ -27,20 +27,19 @@ namespace cevEngine2D.source.world.units {
         public Unit(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
             CreateUnitPerimeterIndex();
 
-            UnitPerimeter = _hitbox;
+            //UnitPerimeter = _hitbox;
             _dead = false;
-            _diagnolLeft = false;
-            _diagnolRight = false;
         }
 
-        public Rectangle createUnitPerimeter(Rectangle scaleRect) {
+        //Uses top left corner from CreateUnitPerimeterIndex
+        public Rectangle CreateUnitPerimeter(Rectangle scaleRect) {
             Rectangle generalCollisionCheck = new Rectangle(
                 scaleRect.X,
                 scaleRect.Y,
                 scaleRect.Width * 3,
                 scaleRect.Height * 3
                 );
-            
+
             return generalCollisionCheck;
         }
 
@@ -52,7 +51,7 @@ namespace cevEngine2D.source.world.units {
                     Hitbox.Height
                     );
             UnitPerimeterSliced.Add(topLeftCorner);
-            this.UnitPerimeter = createUnitPerimeter(topLeftCorner);
+            this.UnitPerimeter = CreateUnitPerimeter(topLeftCorner);
 
             for (int i = 0; i <= 2; i++) {
                 if (i > 0) { //avoid adding corner twice
@@ -64,6 +63,7 @@ namespace cevEngine2D.source.world.units {
                         )
                     );
                 }
+
                 for (int j = 1; j < 3; j++) {
                     UnitPerimeterSliced.Add(new Rectangle(
                         topLeftCorner.X + Hitbox.Width * i,

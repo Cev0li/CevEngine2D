@@ -20,19 +20,23 @@ using cevEngine2D.source.engine;
 namespace cevEngine2D.source.world
 {
     internal class World {
-        public Player player; //TODO;handle collision logic so this is private
+        private Player player; //TODO;handle collision logic so this is private
+
         private List<Projectile> projectiles = new();
         private List<Mob> mobs = new();
         private List<SpawnPoint> spawnPoints = new();
+
+        public Player Player{ get { return player; } }
 
         public World() {
             //currently hardcoded scaling etc...
             player = new(
                 "archer",
-                new Vector2(500, 500),
+                new Vector2(1500, 500),
                 new Vector2(100, 100),
                 new Rectangle(0, 0, 72, 72)
             );
+            player.SubscribeToCollisionEvent(GameGlobals.collisionManager);
 
             spawnPoints.Add(new SpawnPoint(new Vector2(200, 240)));
 
@@ -40,9 +44,8 @@ namespace cevEngine2D.source.world
             GameGlobals.PassMob = AddMob; //Add to mob list. Manage all mobs in game.
         }
 
-        public void Update(float[] playerVelocity) {
-            player.Update(playerVelocity);
-            player.SubscribeToCollisionEvent(GameGlobals.collisionManager);
+        public void Update() {
+            player.Update();
 
             for (int i = 0; i < projectiles.Count; i++) {
                 projectiles[i].Update(mobs.ToList<Unit>());
@@ -94,7 +97,6 @@ namespace cevEngine2D.source.world
                 //Globals.DrawRectHollow(allSprites[i].Hitbox, 1);
                 //Globals.DrawRectHollow(Globals.spriteBatch, allSprites[i].DRect, 1);
             }
-
         }
     }
 }

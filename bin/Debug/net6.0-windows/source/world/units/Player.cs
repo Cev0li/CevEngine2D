@@ -4,6 +4,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.input;
+using cevEngine2D.source.engine.DataStructures.structs;
+using cevEngine2D.source.engine.DataStructures.enums;
 using cevEngine2D.source.world.projectiles;
 using cevEngine2D.source.engine.sprites;
 using System;
@@ -14,21 +16,21 @@ using System.Linq;
 using System.Reflection;
 using cevEngine2D.source.engine.animate;
 using cevEngine2D.source.engine.interfaces;
+using System.Drawing.Text;
 #endregion
-//TODO: State machine
-namespace cevEngine2D.source.world.units
-{
+
+namespace cevEngine2D.source.world.units {
     internal class Player : Unit {
         private AnimationManager animations;
+        private ICollisionManager collisionManager;
+
+        private List<Direction> collisionLocation = new();
         private SpriteEffects flipEffect;
 
-        private ICollisionManager collisionManager;
-   
-
-        //public Vector2 MapPosition { get { return _mapPosition; } }
-
         public Player(string texture, Vector2 pos, Vector2 size, Rectangle sRect) : base(texture, pos, size, sRect) {
+            _speed = 2;
             flipEffect = SpriteEffects.None;
+
 
             animations = new AnimationManager(this);
             animations.AddAnimation("W", 5, 72, false, false, new Vector2(0, 0));
@@ -42,79 +44,75 @@ namespace cevEngine2D.source.world.units
         }
 
         public void SubscribeToCollisionEvent(ICollisionManager eventRaiser) {
-            collisionManager = eventRaiser; 
+            collisionManager = eventRaiser;
             collisionManager.CollisionEvent += HandleCollisions;
         }
 
-        public void HandleCollisions(String check) {
-            //Debug.WriteLine(check);
-            collisionManager.CollisionEvent -= HandleCollisions;
+        public void HandleCollisions(int i) {
+            Direction direction = (Direction)i;
+            collisionLocation.Add(direction);
         }
 
-        public void Update(float[] velocity) {
-            bool diagnolMovement = false;
-            List<String> keyStrings = Globals.keyboard.pressedKeys.Select(key => key.key).ToList();
-            string[] diagnolKeyTargets = { "W", "A", "S", "D"};
-            diagnolMovement = keyStrings.Intersect(diagnolKeyTargets).Count() > 1;
+        public override void Update() {
+            Vector2 velocity = Vector2.Zero;
 
-
-            if (diagnolMovement) {
-                if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("D")) {
-                    _pos += new Vector2(velocity[1], -velocity[3]);
-                    animations.Update("WD");
-                    flipEffect = SpriteEffects.None;
-                }
-
-                if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("A")) {
-                    _pos += new Vector2 (-velocity[1], -velocity[2]);
-                    animations.Update("WA");
-                    flipEffect = SpriteEffects.FlipHorizontally;
-                }
-
-                if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("D")) {
-                    _pos += new Vector2(velocity[0], velocity[3]);
-                    animations.Update("SD");
-                    flipEffect = SpriteEffects.None;
-                }
-
-                if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("A")) {
-                    _pos += new Vector2(-velocity[0], velocity[1]);
-                    animations.Update("SA");
-                    flipEffect = SpriteEffects.FlipHorizontally;
-                }
-            } else {
-                if (Globals.keyboard.GetPress("A")) {
-                    _pos.X -= velocity[1];
-                    animations.Update("A");
-                    flipEffect = SpriteEffects.FlipHorizontally;
-                }
-                if (Globals.keyboard.GetPress("D")) {
-                    _pos.X += velocity[3];
-                    animations.Update("D");
-                    flipEffect = SpriteEffects.None;
-                }
-                if (Globals.keyboard.GetPress("W")) {
-                    _pos.Y -= velocity[2];
-                    animations.Update("W");
-                    flipEffect = SpriteEffects.None;
-                }
-                if (Globals.keyboard.GetPress("S")) {
-                    _pos.Y += velocity[0];
-                    animations.Update("S");
-                    flipEffect = SpriteEffects.None;
-                }
+            //Debug.WriteLine(collisionLocation.Count());
+            if (Globals.keyboard.GetPress("W") 
+                && Globals.keyboard.GetPress("A") 
+                && !collisionLocation.Contains(Direction.NE)) {
+                velocity.X -= 1;
+                velocity.Y -= 1;
+                animations.Update("WA");
+                flipEffect = SpriteEffects.FlipHorizontally;
+            } else if (Globals.keyboard.GetPress("W") && Globals.keyboard.GetPress("D")) {
+                velocity.X += 1;
+                velocity.Y -= 1;
+                animations.Update("WD");
+            } else if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("A")) {
+                velocity.X -= 1;
+                velocity.Y += 1;
+                animations.Update("SA");
+                flipEffect = SpriteEffects.FlipHorizontally;
+            } else if (Globals.keyboard.GetPress("S") && Globals.keyboard.GetPress("D")) {
+                velocity.X += 1;
+                velocity.Y += 1;
+                animations.Update("SD");
+            } else if (Globals.keyboard.GetPress("A") && !collisionLocation.Contains(Direction.E) && !collisionLocation.Contains(Direction.NE)) {
+                velocity.X -= 1;
+                animations.Update("A");
+                flipEffect = SpriteEffects.FlipHorizontally;
+            } else if (Globals.keyboard.GetPress("D")) {
+                velocity.X += 1;
+                animations.Update("D");
+                flipEffect = SpriteEffects.None;
+            } else if (Globals.keyboard.GetPress("W") && !collisionLocation.Contains(Direction.N) && !collisionLocation.Contains(Direction.NE)) {
+                velocity.Y -= 1;
+                animations.Update("W");
+                flipEffect = SpriteEffects.None;
+            } else if (Globals.keyboard.GetPress("S")) {
+                velocity.Y += 1;
+                animations.Update("S");
+                flipEffect = SpriteEffects.None;
             }
-            if (/*Globals.keyboard.GetPress("E")*/Globals.mouse.RightClickRelease()) {
+
+            if (velocity != Vector2.Zero) {
+                velocity.Normalize();
+            }
+
+            _pos += velocity * _speed;
+
+            if (Globals.mouse.RightClickRelease()) {
                 GameGlobals.PassProjectile(new Fireball(
                     "FIREBALL",
                     new Vector2(_hitbox.X + Size.X / 2, _hitbox.Y + _hitbox.Height),
                     new Vector2(100, 100),
-                    new Rectangle(0, 0, 16, 16), 
+                    new Rectangle(0, 0, 16, 16),
                     new Vector2(Globals.mouse.newMousePos.X, Globals.mouse.newMousePos.Y),
                     100000)
                 );
             }
 
+            collisionLocation.Clear();
             base.Update();
         }
 
