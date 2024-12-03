@@ -82,7 +82,8 @@ namespace cevEngine2D.source.engine.tilemap
 
         //BEGIN: Helper methods
         public int EditorToGameDimensions(float editorDim, int mapDim) {
-            float toCast = (float)Math.Round(editorDim / mapDim) * GameGlobals.tileSize;
+            float toCast = (float)(editorDim / mapDim) * GameGlobals.tileSize;
+            Debug.WriteLine($"{editorDim} {mapDim} {toCast}");
             return ((int)toCast);
         }
 

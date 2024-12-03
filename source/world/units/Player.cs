@@ -4,8 +4,6 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using cevEngine2D.source.engine;
 using cevEngine2D.source.engine.input;
-using cevEngine2D.source.engine.DataStructures.structs;
-using cevEngine2D.source.engine.DataStructures.enums;
 using cevEngine2D.source.world.projectiles;
 using cevEngine2D.source.engine.sprites;
 using System;
@@ -47,8 +45,9 @@ namespace cevEngine2D.source.world.units {
             collisionManager.CollisionEvent += HandleCollisions;
         }
 
-        public void HandleCollisions(String message) {
-            Debug.WriteLine(message);
+        public void HandleCollisions(object sender, CollisionEventArgs e) {
+            Debug.WriteLine("event");
+            _pos += e.PenetrationVector;
         }
 
         public override void Update() {

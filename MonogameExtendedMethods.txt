@@ -1,0 +1,67 @@
+    public static void Intersection(ref RectangleF first,
+            ref RectangleF second, out RectangleF result)
+        {
+            var firstMinimum = first.TopLeft;
+            var firstMaximum = first.BottomRight;
+            var secondMinimum = second.TopLeft;
+            var secondMaximum = second.BottomRight;
+
+            var minimum = MathExtended.CalculateMaximumVector2(firstMinimum, secondMinimum);
+            var maximum = MathExtended.CalculateMinimumVector2(firstMaximum, secondMaximum);
+
+            if ((maximum.X < minimum.X) || (maximum.Y < minimum.Y))
+                result = new RectangleF();
+            else
+                result = CreateFrom(minimum, maximum);
+        }
+		
+	public static void CreateFrom(Vector2 minimum, Vector2 maximum, out RectangleF result)
+        {
+            result.X = minimum.X;
+            result.Y = minimum.Y;
+            result.Width = maximum.X - minimum.X;
+            result.Height = maximum.Y - minimum.Y;
+        }
+		
+	public static Vector2 CalculateMinimumVector2(Vector2 first, Vector2 second)
+		{
+			return new Vector2
+			{
+				X = first.X < second.X ? first.X : second.X,
+				Y = first.Y < second.Y ? first.Y : second.Y
+			};
+		}
+		
+	public static Vector2 CalculateMaximumVector2(Vector2 first, Vector2 second)
+		{
+			return new Vector2
+			{
+				X = first.X > second.X ? first.X : second.X,
+				Y = first.Y > second.Y ? first.Y : second.Y
+			};
+		}
+
+    private static Vector2 PenetrationVector(RectangleF rect1, RectangleF rect2)
+        {
+            var intersectingRectangle = RectangleF.Intersection(rect1, rect2);
+            Debug.Assert(!intersectingRectangle.IsEmpty,
+                "Violation of: !intersect.IsEmpty; Rectangles must intersect to calculate a penetration vector.");
+
+            Vector2 penetration;
+            if (intersectingRectangle.Width < intersectingRectangle.Height)
+            {
+                var d = rect1.Center.X < rect2.Center.X
+                    ? intersectingRectangle.Width
+                    : -intersectingRectangle.Width;
+                penetration = new Vector2(d, 0);
+            }
+            else
+            {
+                var d = rect1.Center.Y < rect2.Center.Y
+                    ? intersectingRectangle.Height
+                    : -intersectingRectangle.Height;
+                penetration = new Vector2(0, d);
+            }
+
+            return penetration;
+        }

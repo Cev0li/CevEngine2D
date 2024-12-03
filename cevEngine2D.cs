@@ -32,8 +32,9 @@ namespace cevEngine2D
         }
 
         protected override void Initialize() {
+            GameGlobals.tileSize = 32;
+
             Globals.viewport = _graphics.GraphicsDevice.Viewport;
-            GameGlobals.tileSize = 64;
             Globals.content = this.Content;
             Globals.spriteBatch = new SpriteBatch(GraphicsDevice);
             Globals.keyboard = new CevKeyboard();
@@ -48,12 +49,11 @@ namespace cevEngine2D
         }
 
         protected override void LoadContent() {
-
-
             //load spawn region map
             InitalizeMap createSpawnMap = new("../../../data/spawnCollisionTEST.tmj");
             spawnMap = createSpawnMap.getMapObject();
             spawnMap.Load();
+
             GameGlobals.collisionManager = new CollisionManager<NonDrawableElement>(spawnMap.CollisionObjects);
 
             world = new World();
@@ -106,14 +106,15 @@ namespace cevEngine2D
                 }
             }
 
-            foreach(Rectangle rect in world.Player.UnitPerimeterSliced) {
-                Globals.DrawRectHollow(rect, 1);
-            }
+            //foreach(Rectangle rect in world.Player.UnitPerimeterSliced) {
+            //    Globals.DrawRectHollow(rect, 1);
+            //}
             world.Draw(spawnMap.MapUnits);
 
             foreach (var obj in spawnMap.CollisionObjects) {
                 Globals.DrawRectHollow(obj.DRect, 1);
             }
+            Globals.DrawRectHollow(world.Player.Hitbox, 1);
 
             Globals.spriteBatch.End();
             base.Draw(gameTime);
